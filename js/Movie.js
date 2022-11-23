@@ -2,11 +2,11 @@ const url = new URL("http://localhost:8080/api/auth/movies")
 const mainMovieDiv = document.getElementById('mainMovieDiv')
 
 //Placeholder for a Controller Method that will send a response to the frontend with all the movie genres
-const genreUrl = ""
+const genreUrl = "http://localhost:8080/api/auth/genres/en"
 const movieGenreDropDownSelect = document.getElementById('genreDropDownList')
 
 
-const languageURL = "http://localhost:8080/api/auth/originalLanguage"
+const languageURL = "https://api.themoviedb.org/3/configuration/languages?api_key=3a2720206555a0807cc5c2d72aa65b9a"
 const languageSelect = document.getElementById('movieLanguageChoice')
 
 
@@ -19,19 +19,19 @@ function fetchMovieGenres() {
 function movieGenreData(data) {
   console.log("Movie Genre Json Data ", data)
 
-  for (let i = 0; i < data.genres.length; i++) {
-    const movieGenres = data.genres[i]
+  for (let i = 0; i < data.length; i++) {
+    const genres = data[i]
 
     const genreOption = document.createElement('option')
-    genreOption.innerText = movieGenres.name
-    genreOption.setAttribute('value', movieGenres.id)
+    genreOption.innerText = genres.name
+    genreOption.setAttribute('value', genres.id)
     movieGenreDropDownSelect.appendChild(genreOption)
 
     movieGenreDropDownSelect.addEventListener("change",(event) => {
     const selectIndex = movieGenreDropDownSelect.selectedIndex;
     let optionIndex = movieGenreDropDownSelect.options[selectIndex]
-    movieGenres.id = optionIndex.value
-    console.log("Movie Genre ID ", movieGenres.id)
+    genres.id = optionIndex.value
+    console.log("Movie Genre ID ", genres.id)
 
     let newURLParams = new URLSearchParams(url.search)
     newURLParams.set('genres', optionIndex.value)
@@ -100,6 +100,19 @@ function fetchMoviesForSwipeList() {
 
 function movieDataBasedOnCriteria(data) {
   console.log("Every Movie Json Data", data)
+
+      let pageNumbers = data.page
+
+      window.onscroll = function(event) {
+      if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+      alert("you're at the bottom of the page");
+      let newURLParams = new URLSearchParams(url.search)
+      newURLParams.set('page', pageNumbers+1)
+      url.search = newURLParams.toString()
+      console.log("NEW URL PAGE NUMBER ", url)
+      fetchMoviesForSwipeList()
+    }
+  }
 
   for (let i = 0; i < data.results.length; i++) {
 
