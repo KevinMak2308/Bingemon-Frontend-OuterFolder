@@ -1,12 +1,15 @@
 const url = new URL("http://localhost:8080/api/auth/movies")
 const mainMovieDiv = document.getElementById('mainMovieDiv')
 
+const orloriginalLanguage = new URL("http://localhost:8080/api/auth/movieoriginallanguage")
+const originalLanguageSelect = document.getElementById('movieOriginalLanguageChoice')
+
 //Placeholder for a Controller Method that will send a response to the frontend with all the movie genres
 const genreUrl = "http://localhost:8080/api/auth/genres/en"
 const movieGenreDropDownSelect = document.getElementById('genreDropDownList')
 
 
-const languageURL = "https://api.themoviedb.org/3/configuration/languages?api_key=3a2720206555a0807cc5c2d72aa65b9a"
+const languageURL = "http://localhost:8080/api/auth/movielanguage"
 const languageSelect = document.getElementById('movieLanguageChoice')
 
 
@@ -53,8 +56,7 @@ function movieLanguageData(data) {
 
   for (let i = 0; i < data.length ; i++) {
 
-    const language = data[i]
-
+    let language = data[i]
     const languageOptions = document.createElement('option')
     languageOptions.innerText = language.english_name
     languageOptions.setAttribute('value', language.iso_639_1)
@@ -69,7 +71,7 @@ function movieLanguageData(data) {
       languageOptions.value = optionIndex.value
 
       let newURLParams = new URLSearchParams(url.search)
-      newURLParams.set('with_original_language', optionIndex.value)
+      newURLParams.set('language', optionIndex.value)
       url.search = newURLParams.toString()
       console.log("New URL after change ", url)
 
@@ -118,12 +120,51 @@ function movieDataBasedOnCriteria(data) {
 
   const movies = data.results[i]
   const movieTable = document.createElement('table');
-  movieTable.innerText = "Movies: " + movies.title;
+  const movietextTable = document.createElement('tbody')
+  movieTable.innerText = "Movie Title: " + movies.title;
+  movietextTable.innerText = "Movie Description: " + movies.overview;
   mainMovieDiv.appendChild(movieTable);
+  mainMovieDiv.appendChild(movietextTable);
+  }
+}
+
+function fetchOriginalMovieLanguage() {
+  return fetch(orloriginalLanguage)
+    .then(data => data.json())
+    .then(movieOriginalLanguageData)
+}
+
+function movieOriginalLanguageData(data) {
+  console.log("Original Language data ", data)
+
+  for (let i = 0; i < data.length ; i++) {
+
+    let orilanguage = data[i]
+    const orilanguageOptions = document.createElement('option')
+    orilanguageOptions.innerText = orilanguage.originalLanguage
+    orilanguageOptions.setAttribute('value', original_language)
+
+
+    originalLanguageSelect.appendChild(orilanguageOptions)
+
+
+    originalLanguageSelect.addEventListener("change",(event) => {
+      const selectIndex = originalLanguageSelect.selectedIndex;
+      let optionIndex = originalLanguageSelect.options[selectIndex]
+      orilanguageOptions.value = optionIndex.value
+
+      let newURLParams = new URLSearchParams(url.search)
+      newURLParams.set('with_original_language', optionIndex.value)
+      url.search = newURLParams.toString()
+      console.log("New URL after change ", url)
+
+    })
+
   }
 }
 
 fetchMovieLanguage()
 fetchMovieGenres()
+fetchOriginalMovieLanguage()
 
 
