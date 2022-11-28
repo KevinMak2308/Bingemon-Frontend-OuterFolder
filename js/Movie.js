@@ -125,24 +125,29 @@ function initMovieSwiper(data) {
   movieList = data;
 }
 
-function getMovieTrailerUrl(url) {
-  return fetch(url)
-    .then(data => data.json())
-}
-
-
 let movieList;
 let currentIndex = 0;
 
-function renderNextMovie(userLike) {
+function renderNextMovie() {
   movie = movieList[currentIndex]
   movieTitle.innerText = movie.title
-  console.log(movie)
-  let trailerResponse = getMovieTrailerUrl(movieTrailerUrl + movie.id).then(function(data) {
-    console.log(data)
-    movieTrailer.setAttribute('src', getMovieTrailerUrl(movieTrailerUrl + movie.id))
-  })
-  let movieTrailerURL = trailerResponse
+  console.log("Movie element on currentIndex; ", movie)
+
+  function getMovieTrailerUrl() {
+    return fetch(movieTrailerUrl + movie.id)
+      .then(data => data.json())
+      .then(function(data) {
+        console.log("What comes out in movieTrailerURL? ", data.videos)
+
+        for (let i = 0; i < data.videos.length; i++) {
+          let movieTrailerData = data.videos[data.videos.length -1].key;
+          console.log("movieTrailerData", movieTrailerData)
+          movieTrailer.setAttribute('src', `https://www.youtube.com/embed/${movieTrailerData}`)
+        }
+      })
+  }
+
+  getMovieTrailerUrl()
   currentIndex++;
 }
 
