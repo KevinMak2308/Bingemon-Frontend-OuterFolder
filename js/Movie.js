@@ -1,9 +1,6 @@
 const url = new URL("http://localhost:8080/api/auth/movie-multi-filter")
 const mainMovieDiv = document.getElementById('mainMovieDiv')
 
-//const orloriginalLanguage = new URL("http://localhost:8080/api/auth/movieoriginallanguage")
-const originalLanguageSelect = document.getElementById('movieOriginalLanguageChoice')
-
 //Placeholder for a Controller Method that will send a response to the frontend with all the movie genres
 const genreUrl = "http://localhost:8080/api/auth/genres/en"
 const movieGenreDropDownSelect = document.getElementById('genreDropDownList')
@@ -11,6 +8,7 @@ const movieGenreDropDownSelect = document.getElementById('genreDropDownList')
 const languageURL = "http://localhost:8080/api/auth/movie-language"
 const languageSelect = document.getElementById('movieLanguageChoice')
 
+const movieTrailerUrl = "http://localhost:8080/api/auth/credits/"
 let newURLParams = new URLSearchParams(url.search)
 
 function fetchMovieGenres() {
@@ -73,20 +71,6 @@ function movieLanguageData(data) {
   })
 }
 
-
-
-
-/*function selectMultipleElements() {
-  document.getElementById('submit').onclick = function() {
-    let selected = [];
-    for (let option of document.getElementById('genres').options) {
-      if (option.selected) {
-        selected.push(option.value);
-      }
-    }
-    console.log(selected);
-  }
-}*/
 document.getElementById('decadeDropDown').onchange = function() {
   let selected = [];
   for (let option of document.getElementById('decadeDropDown').options) {
@@ -114,7 +98,6 @@ function movieDataBasedOnCriteria(data) {
       alert("you're at the bottom of the page");
       newURLParams.set('page', pageNumbers+1)
       url.search = newURLParams.toString()
-      fetchMoviesForSwipeList()
     }
   }
 
@@ -128,17 +111,44 @@ function movieDataBasedOnCriteria(data) {
   mainMovieDiv.appendChild(movieTable);
   mainMovieDiv.appendChild(movietextTable);
   }
+  initMovieSwiper(data.results)
 }
 
-/*function fetchOriginalMovieLanguage() {
-  return fetch(orloriginalLanguage)
+const movieTitle = document.getElementById('movieTitle');
+const movieTrailer = document.getElementById('movieTrailer');
+const movieLike = document.getElementById('btnLike');
+const movieDislike = document.getElementById('btnDislike');
+
+function initMovieSwiper(data) {
+  mainMovieDiv.style.display = 'none';
+  console.log("What movie element: ", data[0]);
+  movieList = data;
+}
+
+function getMovieTrailerUrl(url) {
+  return fetch(url)
     .then(data => data.json())
-    .then(movieOriginalLanguageData)
-}*/
+}
+
+
+let movieList;
+let currentIndex = 0;
+
+function renderNextMovie(userLike) {
+  movie = movieList[currentIndex]
+  movieTitle.innerText = movie.title
+  console.log(movie)
+  let trailerResponse = getMovieTrailerUrl(movieTrailerUrl + movie.id).then(function(data) {
+    console.log(data)
+    movieTrailer.setAttribute('src', getMovieTrailerUrl(movieTrailerUrl + movie.id))
+  })
+  let movieTrailerURL = trailerResponse
+  currentIndex++;
+}
 
 
 fetchMovieLanguage()
 fetchMovieGenres()
-//fetchOriginalMovieLanguage()
+
 
 

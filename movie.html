@@ -37,6 +37,20 @@
     <button type="button" onclick="fetchMoviesForSwipeList()">Go to Swipe List</button>
   </div>
 
+  <div id="movieSwiper">
+    <div class="card">
+      <div class="card-header">
+        <h1 id="movieTitle"></h1>
+      </div>
+      <div class="card-body">
+        <iframe width="560" height="315" src="" id="movieTrailer" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <div class="card-footer">
+        <button id="btnLike" onclick="renderNextMovie(true)">Like</button>
+        <button id="btnDislike" onclick="renderNextMovie(false)">Dislike</button>
+      </div>
+    </div>
+  </div>
   <script src="js/Movie.js"></script>
 </body>
 </html>
