@@ -1,10 +1,11 @@
 *{
   margin: unset;
 }
-body{
 
-background: #141e30;
+body{
+  background: #141e30;
 }
+
 .login-modal{
   display: none;
   height: 100vh;
@@ -29,11 +30,12 @@ background: #141e30;
   border: black;
   border-radius:16px;
   box-sizing: border-box;
-  background: rgb(60 77 108);
+  background: rgb(60, 77, 108);
   box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
   z-index: 2;
   position: relative;
 }
+
 .login-form .form-h2{
   text-align: center;
   color: white;
@@ -63,6 +65,7 @@ background: #141e30;
   pointer-events: none;
   transition: .5s;
 }
+
 .login-form input:focus ~ label,
 .login-form input:valid ~ label {
   top: -20px;
@@ -72,12 +75,9 @@ background: #141e30;
 }
 
 .login-form .login-form-btn {
-
- background: #5E5DF0;
  border-radius: 999px;
- box-shadow: #5E5DF0 0 10px 20px -10px;
+ box-shadow: #007CC7 0 10px 20px -10px;
  box-sizing: border-box;
- color: #FFFFFF;
  cursor: pointer;
  font-family: Inter,Helvetica;
  font-size: 16px;
@@ -94,31 +94,35 @@ background: #141e30;
  border: 0;
   margin-bottom: 20px;
  }
-button.login-form-btn:hover {
-  background-color: #5e5df09e;
-}
 
 .close-modal{
   position: absolute;
   top: 4%;
   right: 6%;
 }
+
 .close{
-  color: #F2AA6B;
+  color: #007CC7;
   float: right;
   font-size: 25px;
   line-height: 20px;
-font-weight: 100;
+  font-weight: 100;
   cursor: pointer;
 }
+
+.close:hover {
+  color: #4DA8DA;
+}
+
 .not-signed-up {
   text-align: center;
   color: white;
   text-decoration-line: underline;
   cursor: pointer;
 }
+
 .not-signed-up:hover {
-  color: orange;
+  color: #4DA8DA;
 }
 
 .sign-up-modal{
@@ -130,8 +134,45 @@ font-weight: 100;
 
 }
 
+.col2-text-image {
+    height: 600px;
+}
 
+.container {
+    margin-left: auto;
+    margin-right: auto;
+    padding: 40px 40px;
+    max-width: 2560px;
+}
 
+.row {
+    display: flex;
+    flex-wrap: wrap;
+}
 
+.column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
 
+.col2-text-image .text-content {
+    vertical-align: middle;
+    text-align: center;
+}
 
+.image-content {
+    text-align: center;
+}
+
+.image-content .poster {
+    aspect-ratio: 2/3 !important;
+    max-height: 600px;
+    width: 60%;
+    flex-grow: 1;
+    align-items: center;
+    object-fit: cover;
+    object-position: bottom;
+
+}

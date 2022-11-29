@@ -3,8 +3,14 @@ $(function() {
   $("#navigation").load("header.html");
 });
 
+$(".home-nav").click(function () {
+  $(".sign-up-modal").hide()
+  $(".login-modal").hide()
+})
+
 // open login modal
 $(".login-btn").click(function () {
+  $(".sign-up-modal").hide()
   $(".login-modal").toggle()
 })
 
@@ -14,6 +20,7 @@ $(".close-login").click(function () {
 
 //open signup modal
 $(".sign-up-btn").click(function () {
+  $(".login-modal").hide()
   $(".sign-up-modal").toggle()
 })
 
@@ -90,5 +97,5 @@ function cookieMonster(data) {
 }
 
 function redirect(){
-  
+
 }

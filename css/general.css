@@ -1,0 +1,19 @@
+h1, h2, h3, p, span {
+  color: #FFFFFF;
+  font-family: poppins, sans-serif;
+}
+
+h1, h2, h3 {
+  font-weight: 600;
+}
+
+.btn {
+  color: #FFFFFF;
+  background: #007CC7;
+  transition: all 0.25s ease-in-out;
+}
+
+.btn:hover {
+  color: #000000;
+  background-color: #4DA8DA;
+}
