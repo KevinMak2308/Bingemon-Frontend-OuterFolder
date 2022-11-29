@@ -151,6 +151,9 @@ function renderNextMovie() {
   currentIndex++;
 }
 
+let userCookie = document.cookie;
+
+console.log(userCookie)
 
 fetchMovieLanguage()
 fetchMovieGenres()

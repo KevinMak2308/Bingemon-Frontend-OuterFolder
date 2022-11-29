@@ -4,21 +4,48 @@
   <meta charset="UTF-8">
   <title>Title</title>
   <link rel="stylesheet" href="css/frontpage.css">
+  <link rel="stylesheet" href="css/header.css">
 </head>
 <body>
 <header>
-  <button class="login-btn">Login</button>
+  <div class="header">
+    <a href="#default" class="logo">CompanyLogo</a>
+    <div class="header-right">
+      <a class="active" href="#home">Home</a>
+      <a class="login-btn">Login</a>
+      <a class="sign-up-btn">Sign up</a>
+    </div>
+  </div>
 </header>
 <section>
 
 </section>
 <div class="login-modal">
   <div class="modal-content">
-    <form action="login">
-      <span class="close">x</span>
+    <form class="login-form" action="login" >
+      <div class="close-modal"><span class="close-login close">✖</span></div>
+      <h2 class="form-h2">Login</h2>
       <input id="login-input-username" class="login-input" type="text" placeholder="Username">
       <input id="login-input-password" class="login-input" type="password" placeholder="Password">
-      <button type="button" title="Login" onclick="login()"></button>
+      <button class="login-form-btn" type="button" title="Login" onclick="login()" > Login</button>
+      <div class="not-signed-up">
+        <span class="sign-up-redirect">Sign up here</span>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="sign-up-modal">
+  <div class="modal-content">
+    <form class="login-form" action="">
+      <div class="close-modal"><span class="close-sign-up close">✖</span></div>
+      <h2 class="form-h2">Sign up</h2>
+      <input id="sign-up-input-username" class="login-input" type="text" placeholder="Username">
+      <input id="sign-up-input-password" class="login-input" type="password" placeholder="Password">
+      <button class="login-form-btn" type="" title="Sign up" onclick="signUp()"> Sign up</button>
+      <div class="not-signed-up">
+        <span class="login-redirect">Login here</span>
+      </div>
     </form>
   </div>
 </div>
