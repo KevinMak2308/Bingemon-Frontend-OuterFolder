@@ -1,136 +1,142 @@
 *{
-  margin: unset;
+    margin: unset;
 }
 
 body{
-  background: #141e30;
+    background: #141e30;
 }
 
 .login-modal{
-  display: none;
-  height: 100vh;
-  width: 100%;
-  background: rgba(60, 77, 108, 0.3);
-  z-index: 1;
+    position: absolute;
+    top: 0%;
+    margin: auto;
+    display: none;
+    height: 100vh;
+    width: 100%;
+    background: rgba(60, 77, 108, 0.3);
+    z-index: 1;
 }
 
 .modal-content {
-  display: flex;
-  position: relative;
-  justify-content: center;
-  align-items: center;
-  padding-top: 100px;
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    padding-top: 100px;
 }
 
 .login-form {
-  display: flex;
-  flex-direction: column;
-  padding: 10%;
-  gap: 15px;
-  border: black;
-  border-radius:16px;
-  box-sizing: border-box;
-  background: rgb(60, 77, 108);
-  box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
-  z-index: 2;
-  position: relative;
+    display: flex;
+    flex-direction: column;
+    padding: 10%;
+    gap: 15px;
+    border: black;
+    border-radius:16px;
+    box-sizing: border-box;
+    background: rgb(60, 77, 108);
+    box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+    z-index: 2;
+    position: relative;
 }
 
 .login-form .form-h2{
-  text-align: center;
-  color: white;
-  font-size: 32px;
-  padding-bottom: 25px;
+    text-align: center;
+    color: white;
+    font-size: 32px;
+    padding-bottom: 25px;
 }
 
 .login-form input{
-  width: 100%;
-  padding: 10px 0;
-  font-size: 16px;
-  color: #fff;
-  margin-bottom: 25px;
-  border: none;
-  border-bottom: 1px solid #fff;
-  outline: none;
-  background: transparent;
+    width: 100%;
+    padding: 10px 0;
+    font-size: 16px;
+    color: #fff;
+    margin-bottom: 25px;
+    border: none;
+    border-bottom: 1px solid #fff;
+    outline: none;
+    background: transparent;
 }
 
 .login-form label {
-  position: absolute;
-  top:0;
-  left: 0;
-  padding: 10px 0;
-  font-size: 16px;
-  color: #fff;
-  pointer-events: none;
-  transition: .5s;
+    position: absolute;
+    top:0;
+    left: 0;
+    padding: 10px 0;
+    font-size: 16px;
+    color: #fff;
+    pointer-events: none;
+    transition: .5s;
 }
 
 .login-form input:focus ~ label,
 .login-form input:valid ~ label {
-  top: -20px;
-  left: 0;
-  color: #03e9f4;
-  font-size: 12px;
+    top: -20px;
+    left: 0;
+    color: #03e9f4;
+    font-size: 12px;
 }
 
 .login-form .login-form-btn {
- border-radius: 999px;
- box-shadow: #007CC7 0 10px 20px -10px;
- box-sizing: border-box;
- cursor: pointer;
- font-family: Inter,Helvetica;
- font-size: 16px;
- font-weight: 700;
- line-height: 24px;
- opacity: 1;
- outline: 0 solid transparent;
- padding: 8px 30px;
- user-select: none;
- -webkit-user-select: none;
- touch-action: manipulation;
-  width: 100%;
- word-break: break-word;
- border: 0;
-  margin-bottom: 20px;
- }
+    border-radius: 999px;
+    box-shadow: #007CC7 0 10px 20px -10px;
+    box-sizing: border-box;
+    cursor: pointer;
+    font-family: Inter,Helvetica;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 24px;
+    opacity: 1;
+    outline: 0 solid transparent;
+    padding: 8px 30px;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    width: 100%;
+    word-break: break-word;
+    border: 0;
+    margin-bottom: 20px;
+}
 
 .close-modal{
-  position: absolute;
-  top: 4%;
-  right: 6%;
+    position: absolute;
+    top: 4%;
+    right: 6%;
 }
 
 .close{
-  color: #007CC7;
-  float: right;
-  font-size: 25px;
-  line-height: 20px;
-  font-weight: 100;
-  cursor: pointer;
+    color: #007CC7;
+    float: right;
+    font-size: 25px;
+    line-height: 20px;
+    font-weight: 100;
+    cursor: pointer;
 }
 
 .close:hover {
-  color: #4DA8DA;
+    color: #4DA8DA;
 }
 
 .not-signed-up {
-  text-align: center;
-  color: white;
-  text-decoration-line: underline;
-  cursor: pointer;
+    text-align: center;
+    color: white;
+    text-decoration-line: underline;
+    cursor: pointer;
 }
 
 .not-signed-up:hover {
-  color: #4DA8DA;
+    color: #4DA8DA;
 }
 
 .sign-up-modal{
-  display: none;
-  height: 100vh;
-  width: 100%;
-  background: rgba(60, 77, 108, 0.3);
-  z-index: 1;
+    position: absolute;
+    top: 0%;
+    margin: auto;
+    display: none;
+    height: 100vh;
+    width: 100%;
+    background: rgba(60, 77, 108, 0.3);
+    z-index: 1;
 
 }
 
