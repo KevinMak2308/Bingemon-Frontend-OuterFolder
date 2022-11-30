@@ -40,7 +40,6 @@ function movieGenreData(data) {
   }
 }
 
-
 function fetchMovieLanguage() {
 return fetch(languageURL)
   .then(data => data.json())
@@ -91,15 +90,14 @@ function fetchMoviesForSwipeList() {
 }
 
 function movieDataBasedOnCriteria(data) {
-      let pageNumbers = data.page
-
+      /*let pageNumbers = data.page
       window.onscroll = function(event) {
       if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
       alert("you're at the bottom of the page");
       newURLParams.set('page', pageNumbers+1)
       url.search = newURLParams.toString()
     }
-  }
+  }*/
 
   for (let i = 0; i < data.results.length; i++) {
 
@@ -111,7 +109,9 @@ function movieDataBasedOnCriteria(data) {
   mainMovieDiv.appendChild(movieTable);
   mainMovieDiv.appendChild(movietextTable);
   }
+
   initMovieSwiper(data.results)
+  moviePageData(data.page)
 }
 
 const movieTitle = document.getElementById('movieTitle');
@@ -121,17 +121,25 @@ const movieDislike = document.getElementById('btnDislike');
 
 function initMovieSwiper(data) {
   mainMovieDiv.style.display = 'none';
-  console.log("What movie element: ", data[0]);
   movieList = data;
+  console.log("What movie element: ", movieList);
 }
 
+function moviePageData(data) {
+  pageNumbers = data;
+  console.log("Page Numbers? ", pageNumbers);
+}
+
+let pageNumbers = 1;
 let movieList;
 let currentIndex = 0;
 
 function renderNextMovie() {
   movie = movieList[currentIndex]
   movieTitle.innerText = movie.title
-  console.log("Movie element on currentIndex; ", movie)
+  console.log("Movie element on currentIndex; ", movieList.length-1)
+  console.log("What is currentIndex right now? ", currentIndex)
+
 
   function getMovieTrailerUrl() {
     return fetch(movieTrailerUrl + movie.id)
@@ -149,6 +157,14 @@ function renderNextMovie() {
 
   getMovieTrailerUrl()
   currentIndex++;
+
+  if(currentIndex > movieList.length-1) {
+    currentIndex = 0
+    console.log("Does currentIndex reset here? ", currentIndex)
+      newURLParams.set('page', pageNumbers+1)
+      url.search = newURLParams.toString()
+      fetchMoviesForSwipeList()
+    }
 }
 
 let userCookie = document.cookie;
