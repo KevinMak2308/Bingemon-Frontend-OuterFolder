@@ -90,6 +90,7 @@ function fetchMoviesForSwipeList() {
 }
 
 function movieDataBasedOnCriteria(data) {
+  // ### Scroll Function with Auto-Fetch. Can be used for Show All Movies Page ###
       /*let pageNumbers = data.page
       window.onscroll = function(event) {
       if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
@@ -112,6 +113,13 @@ function movieDataBasedOnCriteria(data) {
 
   initMovieSwiper(data.results)
   moviePageData(data.page)
+}
+
+
+// ### Used Async Function to fetch the swipe list before we render the first movie element - No longer skips the last movie element on each page ###
+async function getSwipeListAndThenRenderMovie() {
+  await fetchMoviesForSwipeList()
+  renderNextMovie()
 }
 
 const movieTitle = document.getElementById('movieTitle');
@@ -161,14 +169,13 @@ function renderNextMovie() {
   if(currentIndex > movieList.length-1) {
     currentIndex = 0
     console.log("Does currentIndex reset here? ", currentIndex)
-      newURLParams.set('page', pageNumbers+1)
-      url.search = newURLParams.toString()
-      fetchMoviesForSwipeList()
+    newURLParams.set('page', pageNumbers+1)
+    url.search = newURLParams.toString()
+    fetchMoviesForSwipeList()
     }
 }
 
 let userCookie = document.cookie;
-
 console.log(userCookie)
 
 fetchMovieLanguage()
