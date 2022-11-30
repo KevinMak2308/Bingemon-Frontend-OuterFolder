@@ -126,6 +126,7 @@ const movieTitle = document.getElementById('movieTitle');
 const movieTrailer = document.getElementById('movieTrailer');
 const movieLike = document.getElementById('btnLike');
 const movieDislike = document.getElementById('btnDislike');
+const moviePoster = document.getElementById('moviePoster')
 
 function initMovieSwiper(data) {
   mainMovieDiv.style.display = 'none';
@@ -159,7 +160,14 @@ function renderNextMovie() {
           let movieTrailerData = data.videos[data.videos.length -1].key;
           console.log("movieTrailerData", movieTrailerData)
           movieTrailer.setAttribute('src', `https://www.youtube.com/embed/${movieTrailerData}`)
+
         }
+        let moviePosterData = data.poster_path
+        moviePoster.setAttribute('src', `https://image.tmdb.org/t/p/w185/${moviePosterData}`)
+
+        let movieOverviewData = document.getElementById('movieOverview')
+        movieOverviewData.innerText = data.overview
+
       })
   }
 
