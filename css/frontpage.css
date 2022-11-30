@@ -140,20 +140,11 @@ body{
 
 }
 
+
+/* col-2text section */
 .col2-text-image {
     height: 600px;
-}
-
-.container {
-    margin-left: auto;
-    margin-right: auto;
-    padding: 40px 40px;
-    max-width: 2560px;
-}
-
-.row {
-    display: flex;
-    flex-wrap: wrap;
+  margin: 100px 0;
 }
 
 .column {
@@ -167,6 +158,25 @@ body{
     vertical-align: middle;
     text-align: center;
 }
+.col2-text-image .text-content p{
+  font-size: 18px;
+
+
+}
+.col2-text-image .text-content .text .markup{
+  font-weight: 400;
+  transition: .5s;
+
+}
+.col2-text-image .text-content .text:hover .markup{
+  color: #007CC7;
+  font-weight: 500;
+}
+
+.col2-text-image .text-content .blue{
+  color: #007CC7;
+}
+
 
 .image-content {
     text-align: center;
@@ -175,10 +185,39 @@ body{
 .image-content .poster {
     aspect-ratio: 2/3 !important;
     max-height: 600px;
-    width: 60%;
+    width: 90%;
     flex-grow: 1;
     align-items: center;
     object-fit: cover;
     object-position: bottom;
 
 }
+
+/* col3 icon text section */
+.col3-icon-text{
+  margin-top: 250px;
+}
+
+.col3-icon-text .icon-content {
+  text-align: center;
+  margin-bottom: 50px;
+}
+.col3-icon-text .icon-content img {
+  filter: invert(31%) sepia(88%) saturate(3102%) hue-rotate(184deg) brightness(93%) contrast(101%);
+  height: 240px;
+}
+
+.col3-icon-text .icon-content img {
+  filter: invert(31%) sepia(88%) saturate(3102%) hue-rotate(184deg) brightness(93%) contrast(101%);
+  height: 240px;
+}
+
+.col3-icon-text .icon-text-col:hover img{
+  filter: invert(31%) sepia(88%) saturate(3102%) hue-rotate(184deg) brightness(100%) contrast(101%);
+}
+
+.col3-icon-text .text-content{
+  text-align: center;
+}
+
+
