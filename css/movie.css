@@ -1,0 +1,16 @@
+.movie-swiper{
+  display: none;
+}
+
+
+.bootstrap-select .bs-ok-default::after {
+  width: 0.3em;
+  height: 0.6em;
+  border-width: 0 0.1em 0.1em 0;
+  transform: rotate(45deg) translateY(0.5rem);
+  display: block;
+}
+
+.btn.dropdown-toggle:focus {
+  outline: none !important;
+}

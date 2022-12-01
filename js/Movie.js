@@ -1,3 +1,9 @@
+$(".toggle-swipe").click(function (){
+  $(".movie-swiper").show()
+});
+
+
+
 const url = new URL("http://localhost:8080/api/auth/movie-multi-filter")
 const mainMovieDiv = document.getElementById('mainMovieDiv')
 
