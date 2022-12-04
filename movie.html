@@ -5,8 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Title</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+          crossorigin="anonymous"></script>
   <link rel="stylesheet" href="css/general.css">
   <link rel="stylesheet" href="css/header.css">
   <link rel="stylesheet" href="css/movie.css">
@@ -55,7 +58,9 @@
         </div>
       </div>
       <div class="swipelist-button-div">
-        <button class="btn swipelist-button toggle-swipe" type="button" onclick="getSwipeListAndThenRenderMovie()">Go to Swipe List</button>
+        <button class="btn swipelist-button toggle-swipe" type="button" onclick="getSwipeListAndThenRenderMovie()">Go to
+          Swipe List
+        </button>
       </div>
     </div>
   </div>
@@ -63,20 +68,43 @@
 
 <div id="movieSwiper" class="movie-swiper">
   <div class="card">
-    <div class="card-header">
-      <h1 id="movieTitle"></h1>
-      <img src="" id="moviePoster"/>
-      <h3 id="movieOverview"></h3>
+
+    <div class="card-body card-body-front">
+
+      <div class="card-header">
+        <h1 id="movieTitle" class="movie-title"></h1>
+        <img src="" id="moviePoster" class="movie-poster"/>
+      </div>
+
+      <div class="card-description">
+        <h3 id="movieOverview"></h3>
+      </div>
+
+      <div class="card-btnFlip">
+        <button type="button" class="btnFlip" onclick="flipCard()"> View Trailer</button>
+      </div>
+
     </div>
-    <div class="card-body">
-      <iframe width="560" height="315" src="" id="movieTrailer" frameborder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowfullscreen></iframe>
+
+    <div class="card-body card-body-back">
+
+      <div class="card-trailer">
+        <iframe type="align-center" width="560" height="315" src="" id="movieTrailer" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen></iframe>
+      </div>
+
+      <div class="card-btnFlip">
+        <button type="button" class="btnFlip" onclick="flipCard()"> Go Back</button>
+      </div>
+
     </div>
+
     <div class="card-footer">
       <button id="btnLike" onclick="renderNextMovie(true)">Like</button>
       <button id="btnDislike" onclick="renderNextMovie(false)">Dislike</button>
     </div>
+
   </div>
 </div>
 

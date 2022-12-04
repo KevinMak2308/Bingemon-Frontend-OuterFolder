@@ -2,6 +2,13 @@ $(".toggle-swipe").click(function (){
   $(".movie-swiper").show()
 });
 
+let cards = document.querySelectorAll('.card');
+function flipCard() {
+  [...cards].forEach((card) => {
+    card.classList.toggle('is-flipped');
+  });
+};
+
 const url = new URL("http://localhost:8080/api/auth/movie-multi-filter")
 const mainMovieDiv = document.getElementById('mainMovieDiv')
 
@@ -185,6 +192,7 @@ function renderNextMovie() {
     url.search = newURLParams.toString()
     fetchMoviesForSwipeList()
     }
+
 }
 
 let userCookie = document.cookie;

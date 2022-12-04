@@ -8,6 +8,11 @@ body {
 
 .movie-swiper {
   display: none;
+  width: 200px;
+  height: 260px;
+  /*   border: 1px solid #CCC; */
+  margin: 40px 0;
+  perspective: 600px;
 }
 
 .dropdown-select {
@@ -79,3 +84,81 @@ body {
   color: white;
   cursor: text;
 }
+
+.card {
+  position: relative;
+  width: 500%;
+  height: 500%;
+  cursor: pointer;
+  transform-style: preserve-3d;
+  transform-origin: center right;
+  transition: transform 1s;
+}
+
+.card-body {
+
+}
+
+.card-body h1 {
+  margin:auto;
+  line-height:80px;
+  vertical-align:middle;
+}
+
+.card-body img {
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  width:60%;
+  height:60%
+}
+
+.card-body h3 {
+  margin:auto;
+  line-height:50px;
+  vertical-align:middle;
+  min-width: 0%;
+  max-width: 100%
+}
+
+.card-body iframe {
+  text-align:center;
+  max-width:100%;
+}
+
+.card-body p {
+  text-align:center;
+  width:100%;
+  height: 100%;
+}
+
+.card.is-flipped {
+  transform: translateX(-100%) rotateY(-180deg);
+}
+
+.card-body {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  line-height: 260px;
+  color: white;
+  text-align: center;
+  font-weight: bold;
+  font-size: 40px;
+  backface-visibility: hidden;
+  background: #404666;
+}
+
+.card-front-button {
+  float: right;
+  margin-right: 20px;
+}
+
+
+.card-body-back {
+  background: #404666;
+  transform: rotateY(180deg);
+}
+
+
+
