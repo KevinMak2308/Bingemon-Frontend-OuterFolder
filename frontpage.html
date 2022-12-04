@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="css/general.css">
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/frontpage.css">
+    <link rel="stylesheet" href="css/footer.css">
 </head>
 <body>
 <header>
@@ -27,7 +28,8 @@
             <div class="col-sm-6 column">
                 <div class="text-content">
                     <h1>Welcome to <strong class="blue">Bingemon</strong></h1>
-                    <p class="text"> <strong class="markup">We strive to simplify</strong> finding the right movie or series to watch regardless of who's watching</p>
+                    <p class="text"><strong class="markup">We strive to simplify</strong> finding the right movie or
+                        series to watch regardless of who's watching</p>
                 </div>
             </div>
             <div class="col-sm-6">
@@ -41,61 +43,95 @@
 
 
 <section class="col3-icon-text">
-  <div class="container">
-    <div class="row">
-      <div class="col-sm-4 icon-text-col">
-        <div class="icon-content">
-          <img src = "./img/cinema-film-movie-svgrepo-com.svg" alt="Movie icon"/>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4 icon-text-col">
+                <div class="icon-content">
+                    <img src="./img/cinema-film-movie-svgrepo-com.svg" alt="Movie icon"/>
+                </div>
+                <div class="text-content">
+                    <h2>Find Movies</h2>
+                    <p class="text">Udforsk tusindvis af timers film.</p>
+                </div>
+            </div>
+            <div class="col-sm-4 icon-text-col">
+                <div class="icon-content ">
+                    <img src="./img/tv-svgrepo-com.svg" alt="tv-series icon"/>
+                </div>
+                <div class="text-content icon-text-col">
+                    <h2>Find TV-Series</h2>
+                    <p class="text">Udforsk tusindvis af timers TV-serier.</p>
+                </div>
+            </div>
+            <div class="col-sm-4 icon-text-col">
+                <div class="icon-content">
+                    <img src="./img/people-svgrepo-com.svg" alt="people icon"/>
+                </div>
+                <div class="text-content">
+                    <h2>Se sammen</h2>
+                    <p class="text">Tilføj venner og se film/serier sammen</p>
+                </div>
+            </div>
         </div>
-        <div class="text-content">
-          <h2>Find Movies</h2>
-          <p class="text">Udforsk tusindvis af timers tv-serier, film og Originals.</p>
-        </div>
-      </div>
-      <div class="col-sm-4 icon-text-col">
-        <div class="icon-content ">
-          <img src = "./img/tv-svgrepo-com.svg" alt="tv-series icon"/>
-        </div>
-        <div class="text-content icon-text-col">
-          <h2>Find TV-Series</h2>
-          <p class="text">Udforsk tusindvis af timers tv-serier, film og Originals.</p>
-        </div>
-      </div>
-      <div class="col-sm-4 icon-text-col">
-        <div class="icon-content">
-          <img src = "./img/people-svgrepo-com.svg" alt="people icon"/>
-        </div>
-        <div class="text-content">
-          <h2>Se sammen</h2>
-          <p class="text">Udforsk tusindvis af timers tv-serier, film og Originals.</p>
-        </div>
-      </div>
     </div>
-  </div>
 </section>
 
 <section>
-  <div class="container">
-    <div class="row">
-      <div class="col-sm-12 column">
-        <div class="text-content">
-          <h2>Ofte stillede spørgsmål</h2>
-          <div class="question-box">
-            <div class="answer">
-              <h3>Hvem er vi?</h3>
-              <p></p>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 column">
+                <div class="questions-container">
+                    <div class="question-container">
+                        <div class="question">
+                            <h3>
+                                Hvad er Bingemon?
+                                <img src="img/plus-svgrepo-com.svg" class="plus-svg">
+                            </h3>
+                            <div class="answer-container">
+                                <p>
+                                    Bingemon er et værktøj, der skal gøre det nemmere at finde film og serier at se sammen.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="question-container">
+                        <div class="question">
+                            <h3>
+                                Hvad koster Bingemon?
+                                <img src="img/plus-svgrepo-com.svg" class="plus-svg">
+                            </h3>
+                            <div class="answer-container">
+                                <p>
+                                    Det er ganske gratis.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="question-container">
+                        <div class="question">
+                            <h3>
+                                Hvordan bruger jeg Bingemon?
+                                <img src="img/plus-svgrepo-com.svg" class="plus-svg" alt="Plus sign">
+                            </h3>
+                            <div class="answer-container">
+                                <p>
+                                    Guide:
+                                </p>
+                                <ul>
+                                    <li>Opret profil</li>
+                                    <li>Log ind</li>
+                                    <li>Tilføj film til din film-liste</li>
+                                    <li>Tilføj serier til din serie-liste</li>
+                                    <li>Tilføj venner</li>
+                                    <li>Find liste af film/serier både du og din ven har tilføjet til sin liste</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
-
         </div>
-      </div>
-      <div class="col-sm-6">
-        <div class="image-content">
-          <img class="poster" src="./img/avatar2_poster.jpg" alt="Avatar 2 poster">
-        </div>
-      </div>
     </div>
-  </div>
 </section>
 
 <div class="login-modal">
@@ -127,7 +163,14 @@
     </div>
 </div>
 
+<footer>
+    <div id="particles-js"></div>
+    <script src="http://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+</footer>
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="js/frontpage.js"></script>
+<script src="js/header.js"></script>
+<script src="js/footer.js"></script>
 </body>
 </html>
