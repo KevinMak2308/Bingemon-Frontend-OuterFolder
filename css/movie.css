@@ -179,7 +179,6 @@ body {
 }
 
 .movie-card-body p {
-    text-align: center;
     width: 100%;
     height: 100%;
 }
@@ -196,6 +195,11 @@ body {
     background-color: rgba(0,0,0,0.3);
     position: absolute;
     top: 0px;
+}
+
+.movie-card-description {
+    text-align: justify !important;
+    word-break: break-word;
 }
 
 .movie-card-btn-like-dislike .btn-like {
