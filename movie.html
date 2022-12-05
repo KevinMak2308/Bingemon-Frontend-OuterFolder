@@ -71,13 +71,17 @@
 
     <div class="card-body card-body-front">
 
-      <div class="card-header">
-        <h1 id="movieTitle" class="movie-title"></h1>
+      <div class="card-poster">
         <img src="" id="moviePoster" class="movie-poster"/>
       </div>
 
       <div class="card-description">
         <h3 id="movieOverview"></h3>
+
+        <div class="card-btnLikeDislike">
+          <button id="btnLike" onclick="renderNextMovie(true)">Like</button>
+          <button id="btnDislike" onclick="renderNextMovie(false)">Dislike</button>
+        </div>
       </div>
 
       <div class="card-btnFlip">
@@ -100,10 +104,7 @@
 
     </div>
 
-    <div class="card-footer">
-      <button id="btnLike" onclick="renderNextMovie(true)">Like</button>
-      <button id="btnDislike" onclick="renderNextMovie(false)">Dislike</button>
-    </div>
+
 
   </div>
 </div>

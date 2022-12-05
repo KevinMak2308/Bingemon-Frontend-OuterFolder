@@ -133,7 +133,6 @@ async function getSwipeListAndThenRenderMovie() {
   renderNextMovie()
 }
 
-const movieTitle = document.getElementById('movieTitle');
 const movieTrailer = document.getElementById('movieTrailer');
 const movieLike = document.getElementById('btnLike');
 const movieDislike = document.getElementById('btnDislike');
@@ -156,7 +155,6 @@ let currentIndex = 0;
 
 function renderNextMovie() {
   movie = movieList[currentIndex]
-  movieTitle.innerText = movie.title
   console.log("Movie element on currentIndex; ", movieList.length-1)
   console.log("What is currentIndex right now? ", currentIndex)
 
@@ -174,7 +172,7 @@ function renderNextMovie() {
 
         }
         let moviePosterData = data.poster_path
-        moviePoster.setAttribute('src', `https://image.tmdb.org/t/p/w185/${moviePosterData}`)
+        moviePoster.setAttribute('src', `https://image.tmdb.org/t/p/w500/${moviePosterData}`)
 
         let movieOverviewData = document.getElementById('movieOverview')
         movieOverviewData.innerText = data.overview
