@@ -160,5 +160,8 @@ h1, h2, h3 {
   width: 100%;
   background: rgba(60, 77, 108, 0.3);
   z-index: 1;
+}
 
+.btn-mt {
+    margin-top: 2vh;
 }
