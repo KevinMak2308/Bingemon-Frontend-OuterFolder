@@ -1,7 +1,17 @@
-$(".question-container").click(function() {
-    console.log(this)
-    $(".question-container").toggleClass("open")
-})
+/*
+          $(".question-container").click(function() {
+  console.log(this)
+  $(".question-container").toggleClass("open")
+})       
+ */
+
+/*===============================================
+  =          Q&A collapsing           =
+  ===============================================*/
+$('.question-container').click(function(){
+  $(this).toggleClass('active');
+  $(this).find('.answer-container').slideToggle(800);
+});
 
 const loginUrl = "http://localhost:8080/api/auth/signin";
 

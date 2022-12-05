@@ -41,3 +41,16 @@ $(".login-redirect").click(function () {
   $(".login-modal").toggle()
   $(".sign-up-modal").toggle()
 })
+
+// close modal on click outside at anywhere
+$(document).click(function(event) {
+  if (!$(event.target).closest(".login-form, .login-btn").length) {
+    $("body").find(".login-modal").hide();
+  }
+});
+
+$(document).click(function(event) {
+  if (!$(event.target).closest(".login-form, .sign-up-btn").length) {
+    $("body").find(".sign-up-modal").hide();
+  }
+});

@@ -112,11 +112,26 @@ body{
 .question-container .question .answer-container {
     display: none;
 }
-
-.question-container.open .question .answer-container {
-    display: block;
+.active h3{
+  transition: 0.8s;
 }
 
-.open {
-    display: block !important;
+.active h3:after {
+  content: '\2212';
+  float: right;
+  margin-right: 11px;
+  margin-top: 5px;
+ 
+
 }
+
+.active img{
+  display: none;
+}
+
+
+
+
+
+
+
