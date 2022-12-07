@@ -192,7 +192,7 @@ body {
     transform: rotateY(180deg);
     height: max-content;
     padding: 8px;
-    background-color: rgba(0,0,0,0.3);
+    background-color: rgba(0, 0, 0, 0.3);
     position: absolute;
     top: 0px;
 }
@@ -204,14 +204,19 @@ body {
 
 .movie-card-btn-like-dislike .btn-like {
     position: absolute;
-    top: 40%;
+    top: 50%;
     right: 0%;
     z-index: 2000;
     width: 72px;
+    color: chartreuse;
+    background-color: black !important;
+    font-size: larger;
+    font-weight: 900;
 }
 
 .movie-card-btn-like-dislike .btn-like:hover {
     background-color: chartreuse !important;
+    color: black;
 }
 
 @media only screen and (min-width: 761px) and (max-width: 768px) {
@@ -228,14 +233,21 @@ body {
 
 .movie-card-btn-like-dislike .btn-dislike {
     position: absolute;
-    top: 40%;
+    top: 50%;
     left: 0%;
     z-index: 2000;
     width: 72px;
+    color: red;
+    background-color: black !important;
+    font-size: larger;
+    font-weight: 900;
 }
 
 .movie-card-btn-like-dislike .btn-dislike:hover {
-    background-color: red !important;
+    box-shadow: rgba(255, 0, 0, 0.5) 0 1px 12px;
+    transition-duration: .1s;
+    background-color: red;
+    color: black !important;
 }
 
 @media only screen and (min-width: 761px) and (max-width: 768px) {
