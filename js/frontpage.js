@@ -4,7 +4,6 @@
   $(".question-container").toggleClass("open")
 })
  */
-
 jQuery(document).ready(function(){
   jQuery("#navigation").load("header.html");
 });

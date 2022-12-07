@@ -1,5 +1,4 @@
 // import header fragment // virker ikke nu
-
 $(".home-nav").click(function () {
   $(".sign-up-modal").hide()
   $(".login-modal").hide()

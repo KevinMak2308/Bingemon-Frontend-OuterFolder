@@ -1,3 +1,7 @@
+if(!document.cookie) {
+  window.location.href = "frontpage.html"
+}
+
 $(".toggle-swipe").click(function () {
     $(".movie-swiper").show()
 });
@@ -195,10 +199,6 @@ function renderNextMovie() {
     }
 
 }
-
-let userCookie = document.cookie;
-console.log(userCookie)
-
 fetchMovieLanguage()
 fetchMovieGenres()
 
