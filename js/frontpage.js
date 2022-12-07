@@ -76,6 +76,7 @@ function signUp() {
 function userLoginCookie(data) {
   document.cookie = "User=" + data.jti
   window.location.reload()
+
 }
 
 function mostPopularMovie(data) {
