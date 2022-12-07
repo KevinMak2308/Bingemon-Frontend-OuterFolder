@@ -54,7 +54,5 @@ $(document).click(function(event) {
 if(document.cookie) {
   $(".login-btn").hide()
   $(".sign-up-btn").hide()
-
   $(".swipelist-btn").show()
-
 }

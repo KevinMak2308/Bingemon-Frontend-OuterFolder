@@ -16,7 +16,6 @@
   line-height: 25px;
   border-radius: 4px;
   cursor: pointer;
-
 }
 
 /* Style the logo link (notice that we set the same value of line-height and font-size to prevent the header to increase when the font gets bigger */
@@ -48,4 +47,8 @@
 
 .swipelist-btn {
   display: none;
+}
+
+.header img {
+    max-height: 50px;
 }

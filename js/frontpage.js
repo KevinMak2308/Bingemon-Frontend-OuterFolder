@@ -17,6 +17,9 @@ $('.question-container').click(function(){
 });
 
 const loginUrl = "http://localhost:8080/api/auth/signin";
+const moviePosterUrl = new URL("http://localhost:8080/api/auth/movie-multi-filter")
+const popularMoviePoster = document.getElementById("mostPopularMoviePoster")
+
 
 function login() {
   let username = document.getElementById("login-input-username").value;
@@ -74,3 +77,25 @@ function userLoginCookie(data) {
   document.cookie = "User=" + data.jti
   window.location.reload()
 }
+
+function mostPopularMovie(data) {
+    for (let i = 0; i < 1; i++) {
+        var movies = data.results[i]
+    }
+    mostPopularMoviePoster(movies)
+}
+
+function mostPopularMoviePoster(movie) {
+    const posterUrl = "https://image.tmdb.org/t/p/original/"
+    const moviePosterUrl = movie.poster_path
+    console.log(moviePosterUrl)
+    popularMoviePoster.setAttribute('src', posterUrl + moviePosterUrl)
+}
+
+function fetchMovieForPopularMoviePoster() {
+    return fetch(moviePosterUrl)
+        .then(data => data.json())
+        .then(mostPopularMovie)
+}
+
+fetchMovieForPopularMoviePoster()
