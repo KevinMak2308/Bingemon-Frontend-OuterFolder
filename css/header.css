@@ -45,3 +45,7 @@
 .header-right {
   float: right;
 }
+
+.swipelist-btn {
+  display: none;
+}

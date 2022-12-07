@@ -2,8 +2,12 @@
           $(".question-container").click(function() {
   console.log(this)
   $(".question-container").toggleClass("open")
-})       
+})
  */
+
+jQuery(document).ready(function(){
+  jQuery("#navigation").load("header.html");
+});
 
 /*===============================================
   =          Q&A collapsing           =
@@ -30,12 +34,18 @@ function login() {
     })
   }
 
-  console.log("im mister meseeks", postLoginRequest)
+  console.log("Login Request", postLoginRequest)
 
-  return fetch(loginUrl, postLoginRequest)
-    .then(response => response.json())
-    .then(cookieMonster)
+  fetch(loginUrl, postLoginRequest)
+    .then((response) => {
+      if(response.ok) {
+        return response.json()
+      }
+      throw new Error("Login Failed!")
+    })
+    .then(userLoginCookie)
     .catch(error => console.log(error));
+
 }
 
 const signUpUrl = "http://localhost:8080/api/auth/signup";
@@ -61,12 +71,7 @@ function signUp() {
     .catch(error => console.log(error))
 }
 
-
-function cookieMonster(data) {
+function userLoginCookie(data) {
   document.cookie = "User=" + data.jti
-  window.location.href = "movie.html";
-}
-
-function redirect(){
-
+  window.location.reload()
 }

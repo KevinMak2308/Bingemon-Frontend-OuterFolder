@@ -1,7 +1,4 @@
 // import header fragment // virker ikke nu
-$(function() {
-  $("#navigation").load("header.html");
-});
 
 $(".home-nav").click(function () {
   $(".sign-up-modal").hide()
@@ -54,3 +51,11 @@ $(document).click(function(event) {
     $("body").find(".sign-up-modal").hide();
   }
 });
+
+if(document.cookie) {
+  $(".login-btn").hide()
+  $(".sign-up-btn").hide()
+
+  $(".swipelist-btn").show()
+
+}

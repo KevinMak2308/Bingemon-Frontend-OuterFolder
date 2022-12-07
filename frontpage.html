@@ -12,15 +12,8 @@
     <link rel="stylesheet" href="css/footer.css">
 </head>
 <body>
-<header>
-    <div class="header">
-        <a class="home-nav logo" href="#home">Bingemon</a>
-        <div class="header-right">
-            <a class="home-nav active" href="#home">Home</a>
-            <a class="login-btn">Login</a>
-            <a class="sign-up-btn">Sign up</a>
-        </div>
-    </div>
+<header id="navigation">
+
 </header>
 <section class="col2-text-image">
     <div class="container">
@@ -40,7 +33,6 @@
         </div>
     </div>
 </section>
-
 
 <section class="col3-icon-text">
     <div class="container">
@@ -137,7 +129,7 @@
 
 <div class="login-modal">
     <div class="modal-content">
-        <form class="login-form" action="login">
+        <form id="loginForm" class="login-form" action="login">
             <div class="close-modal"><span class="close-login close">✖</span></div>
             <h2 class="form-h2">Login</h2>
             <input id="login-input-username" class="login-input" type="text" placeholder="Username">
@@ -171,7 +163,6 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="js/frontpage.js"></script>
-<script src="js/header.js"></script>
 <script src="js/footer.js"></script>
 </body>
 </html>
