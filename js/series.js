@@ -41,6 +41,8 @@ const seriesGenreDropDownSelect = document.getElementById('seriesGenreDropDownLi
 
 const seriesLanguageChoice = document.getElementById('seriesLanguageChoice')
 
+const seriesSort = document.getElementById('seriesSort')
+
 const seriesTrailerUrl = basicUrl + "api/auth/series/credits/"
 let newURLParams = new URLSearchParams(url.search)
 
@@ -77,6 +79,17 @@ function seriesLanguageData(data) {
         let optionIndex = seriesLanguageChoice.options[selectIndex]
 
         newURLParams.set('language', optionIndex.value)
+        url.search = newURLParams.toString()
+    })
+}
+
+function seriesSortForSwipeList(data) {
+
+    seriesSort.addEventListener("change", (event) => {
+        const selectIndex = seriesSort.selectedIndex;
+        let optionIndex = seriesSort.options[selectIndex]
+
+        newURLParams.set('sort_by', optionIndex.value)
         url.search = newURLParams.toString()
     })
 }
@@ -144,7 +157,7 @@ async function addSeries(seriesID) {
 
 async function renderNextSeries(added) {
     series = seriesList[currentIndex]
-    console.log("Series title: " + series.name);
+    console.log("Series title: " + series.original_name);
     if (added && currentIndex == 0) {
         seriesAdd = seriesList[currentIndex]
         await addSeries(seriesAdd.id)
@@ -184,3 +197,4 @@ async function renderNextSeries(added) {
 
 fetchSeriesGenres()
 seriesLanguageData()
+seriesSortForSwipeList()
