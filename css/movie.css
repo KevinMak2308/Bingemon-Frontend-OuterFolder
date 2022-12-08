@@ -123,6 +123,7 @@ body {
     backface-visibility: hidden;
     position: relative;
     margin: auto;
+    z-index: 1000;
 }
 
 .movie-card-body h1 {
@@ -209,7 +210,6 @@ body {
     z-index: 2000;
     width: 72px;
     color: chartreuse;
-    background-color: black !important;
     font-size: larger;
     font-weight: 900;
 }
@@ -238,7 +238,6 @@ body {
     z-index: 2000;
     width: 72px;
     color: red;
-    background-color: black;
     font-size: larger;
     font-weight: 900;
 }

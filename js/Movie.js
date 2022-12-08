@@ -1,3 +1,7 @@
+jQuery(document).ready(function(){
+    jQuery("#navigation").load("header.html");
+});
+
 if (!document.cookie) {
     window.location.href = "frontpage.html"
 }
@@ -23,11 +27,7 @@ function cookieSplitter() {
     for (let i = 0; i < cookiearray.length; i++) {
         key = cookiearray[i].split('=')[0];
         value = cookiearray[i].split('=')[1];
-
-        console.log("Cookie Key", key)
-        console.log("Cookie Value", value)
     }
-    console.log("What is in value? ", value)
     return value;
 }
 
@@ -68,8 +68,6 @@ function movieGenreData(data) {
 
             newURLParams.set('genres', optionIndex.value)
             url.search = newURLParams.toString()
-            console.log(url.search);
-
         })
     }
 }
@@ -99,8 +97,6 @@ function movieLanguageData(data) {
 
         newURLParams.set('language', optionIndex.value)
         url.search = newURLParams.toString()
-        console.log(languageOption.value);
-
     })
 }
 
@@ -114,7 +110,6 @@ document.getElementById('decadeDropDown').onchange = function () {
     let decade = selected;
     newURLParams.set("decade", decade.toString());
     url.search = newURLParams.toString();
-    console.log(url.href);
 }
 
 function fetchMoviesForSwipeList() {
@@ -157,8 +152,6 @@ async function getSwipeListAndThenRenderMovie() {
 }
 
 const movieTrailer = document.getElementById('movieTrailer');
-const movieLike = document.getElementById('btnLike');
-const movieDislike = document.getElementById('btnDislike');
 const moviePoster = document.getElementById('moviePoster');
 const movieButtonsLikeDislike = document.getElementById('movieCardBtnLikeDislike');
 
@@ -166,24 +159,20 @@ function initMovieSwiper(data) {
     mainMovieDiv.style.display = 'none';
     movieButtonsLikeDislike.style.display = 'block';
     movieList = data;
-    console.log("What movie element: ", movieList);
 }
 
 function moviePageData(data) {
     pageNumbers = data;
-    console.log("Page Numbers? ", pageNumbers);
 }
 
 let pageNumbers = 1;
 let movieList;
 let currentIndex = 0;
 
-console.log("this is user id " + cookieSplitter())
 
 const addMovieUrl = basicUrl + "api/auth/userMovieList/" + cookieSplitter()
 
 async function addMovie(movieID) {
-    console.log(movieID)
     let postMovieRequest = {
         method: "POST",
         headers: {
@@ -200,21 +189,20 @@ async function addMovie(movieID) {
 
 async function renderNextMovie(added) {
     movie = movieList[currentIndex]
-    console.log("Movie element on currentIndex; ", movieList.length - 1)
-    console.log("What is currentIndex right now? ", currentIndex)
-    movieAdd = movieList[currentIndex - 1]
-    if (added) await addMovie(movieAdd.id)
-    console.log(added)
+    if (added && currentIndex == 0) {
+        movieAdd = movieList[currentIndex]
+        await addMovie(movieAdd.id)
+    } else if (added) {
+        movieAdd = movieList[currentIndex - 1]
+        await addMovie(movieAdd.id)
+    }
 
     function getMovieTrailerUrl() {
         return fetch(movieTrailerUrl + movie.id)
             .then(data => data.json())
             .then(function (data) {
-                console.log("What comes out in movieTrailerURL? ", data.videos)
-
                 for (let i = 0; i < data.videos.length; i++) {
                     let movieTrailerData = data.videos[data.videos.length - 1].key;
-                    console.log("movieTrailerData", movieTrailerData)
                     movieTrailer.setAttribute('src', `https://www.youtube.com/embed/${movieTrailerData}`)
 
                 }
@@ -223,7 +211,6 @@ async function renderNextMovie(added) {
 
                 let movieOverviewData = document.getElementById('movieOverview')
                 movieOverviewData.innerText = data.overview
-
             })
     }
 
@@ -232,14 +219,11 @@ async function renderNextMovie(added) {
 
     if (currentIndex > movieList.length - 1) {
         currentIndex = 0
-        console.log("Does currentIndex reset here? ", currentIndex)
         newURLParams.set('page', pageNumbers + 1)
         url.search = newURLParams.toString()
         fetchMoviesForSwipeList()
     }
-
 }
 
 fetchMovieLanguage()
 fetchMovieGenres()
-
