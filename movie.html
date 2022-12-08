@@ -15,8 +15,15 @@
   <link rel="stylesheet" href="css/movie.css">
 </head>
 <body>
-<header id="navigation">
-
+<header>
+  <div class="header">
+    <a class="home-nav logo" href="#home">Bingemon</a>
+    <div class="header-right">
+      <a class="home-nav active" href="#home">Home</a>
+      <a class="login-btn">Login</a>
+      <a class="sign-up-btn">Sign up</a>
+    </div>
+  </div>
 </header>
 
 <div id="mainMovieDiv" class="col3-movie-dropdowns">
@@ -51,56 +58,58 @@
         </div>
       </div>
       <div class="swipelist-button-div">
-        <button class="btn swipelist-button toggle-swipe" type="button" onclick="getSwipeListAndThenRenderMovie()">Go to
+        <button class="btn swipelist-button toggle-swipe" type="button"
+                onclick="getSwipeListAndThenRenderMovie()">Go to
           Swipe List
         </button>
       </div>
     </div>
   </div>
 </div>
+<div>
+  <div id="movieCardBtnLikeDislike" class="movie-card-btn-like-dislike">
+    <button id="btnLike" class="btn btn-like" onclick="renderNextMovie(true)">✓</button>
+    <button id="btnDislike" class="btn btn-dislike" onclick="renderNextMovie(false)">X</button>
+  </div>
+  <div id="movieSwiper" class="movie-swiper">
+    <div class="movie-card">
 
-<div id="movieSwiper" class="movie-swiper">
-  <div class="card">
+      <div class="movie-card-body">
 
-    <div class="card-body card-body-front">
-
-      <div class="card-poster">
-        <img src="" id="moviePoster" class="movie-poster"/>
-      </div>
-
-      <div class="card-description">
-        <h3 id="movieOverview"></h3>
-
-        <div class="card-btnLikeDislike">
-          <button id="btnLike" onclick="renderNextMovie(true)">Like</button>
-          <button id="btnDislike" onclick="renderNextMovie(false)">Dislike</button>
+        <div class="movie-card-poster">
+          <img src="" id="moviePoster" class="movie-poster"/>
         </div>
+
+
+        <div class="movie-card-btn-flip">
+          <button class="btn btn-mt" onclick="flipCard()">More info</button>
+        </div>
+
       </div>
 
-      <div class="card-btnFlip">
-        <button type="button" class="btnFlip" onclick="flipCard()"> View Trailer</button>
+      <div class="movie-card-body movie-card-body-back">
+
+        <div class="movie-card-trailer">
+          <iframe type="align-center" width="560" height="315" src="" id="movieTrailer" frameborder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowfullscreen></iframe>
+        </div>
+        <div class="movie-card-description">
+          <p id="movieOverview"></p>
+        </div>
+
+
+        <div class="movie-card-btn-flip">
+          <button class="btn btn-mt" onclick="flipCard()">Go Back</button>
+        </div>
+
       </div>
+
 
     </div>
-
-    <div class="card-body card-body-back">
-
-      <div class="card-trailer">
-        <iframe type="align-center" width="560" height="315" src="" id="movieTrailer" frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowfullscreen></iframe>
-      </div>
-
-      <div class="card-btnFlip">
-        <button type="button" class="btnFlip" onclick="flipCard()"> Go Back</button>
-      </div>
-
-    </div>
-
-
-
   </div>
 </div>
+
 
 <div class="login-modal">
   <div class="modal-content">
