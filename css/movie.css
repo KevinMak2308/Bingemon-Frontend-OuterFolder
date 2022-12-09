@@ -126,6 +126,10 @@ body {
     z-index: 1000;
 }
 
+.movie-card-body .container {
+  padding: 0px !important;
+}
+
 .movie-card-body h1 {
     margin: auto;
     line-height: 80px;
@@ -203,6 +207,11 @@ body {
     word-break: break-word;
 }
 
+.movie-card-cast{
+  text-align: justify !important;
+  word-break: break-word;
+}
+
 .movie-card-btn-like-dislike .btn-like {
     position: absolute;
     top: 50%;
@@ -263,3 +272,5 @@ body {
 .movie-card-btn-like-dislike {
     display: none;
 }
+
+
