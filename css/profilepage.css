@@ -1,0 +1,19 @@
+.movie-list-section .movies-container, .series-list-section .series-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+
+.movie-list-section .movies-container .movie-container, .series-container .serie-container{
+  flex: 0 0 15%;
+  max-width: 17%;
+}
+
+
+.movie-list-section .movies-container .movie-container img, .series-list-section .series-container .serie-container img{
+  width: 100%;
+  object-fit: cover;
+}
+
+
