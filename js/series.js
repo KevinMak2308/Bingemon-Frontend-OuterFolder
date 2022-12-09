@@ -173,11 +173,15 @@ async function renderNextSeries(added) {
       .then(data => data.json())
       .then(function (data) {
         for (let i = 0; i < data.videos.length; i++) {
-          let seriesTrailerData = data.videos[data.videos.length - 1].key;
-          seriesTrailer.setAttribute("src", "https://www.youtube.com/embed/" + seriesTrailerData)
-          //console.log("Series trailer key: " + seriesTrailerData);
-          //console.log("innertext: " + seriesTrailer.innerText);
+          if (data.videos.length == 0) {
+
+          } else {
+            let seriesTrailerData = data.videos[data.videos.length - 1].key;
+            seriesTrailer.setAttribute("src", "https://www.youtube.com/embed/" + seriesTrailerData)
+
+          }
         }
+        console.log(data)
         let seriesPosterData = data.poster_path
         seriesPoster.setAttribute("src", "https://image.tmdb.org/t/p/w500" + seriesPosterData)
         let seriesOverviewData = document.getElementById('seriesOverview')
@@ -205,6 +209,7 @@ async function renderNextSeries(added) {
           let seriesReviewData = data[i];
 
         }
+        console.log(data)
         let seriesRating = document.getElementById('seriesRating')
         seriesRating.innerText = data.vote_average.toFixed(1)
 
