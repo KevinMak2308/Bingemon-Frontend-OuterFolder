@@ -90,9 +90,58 @@
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                             allowfullscreen autofocus="true"></iframe>
                 </div>
+
+              <div class="container">
+                <div class="row">
+                  <div class="col">
+                    <div class="movie-card-rating">
+                      <label class="select-label" for="seriesRating">TMDB rating: </label>
+                      <p id="seriesRating"></p>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="movie-card-runtime">
+                      <label class="select-label" for="seriesRuntime">Episode Runtime: </label>
+                      <p id="seriesRuntime"></p>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="movie-card-release">
+                      <label class="select-label" for="seriesRelease">Released: </label>
+                      <p id="seriesRelease"></p>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="movie-card-releaseEnd">
+                      <label class="select-label" for="seriesReleaseEnd">Last release: </label>
+                      <p id="seriesReleaseEnd"></p>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="movie-card-episodes">
+                      <label class="select-label" for="seriesEpisodes">Number of episodes: </label>
+                      <p id="seriesEpisodes"></p>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="movie-card-seasons">
+                      <label class="select-label" for="seriesSeasons">Number of Seasons: </label>
+                      <p id="seriesSeasons"></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
                 <div class="movie-card-description">
+                  <label class="select-label" for="seriesCast">Plot: </label>
                     <p id="seriesOverview"></p>
                 </div>
+
+              <div class="movie-card-cast">
+                <label class="select-label" for="seriesCast">Cast: </label>
+                <p id="seriesCast"></p>
+              </div>
+
                 <div class="movie-card-btn-flip">
                     <button class="btn btn-mt" onclick="flipCard()">Go Back</button>
                 </div>
