@@ -52,6 +52,22 @@
           </select>
         </div>
       </div>
+        <div class="col-sm-12">
+            <label class="select-label" for="movieLanguageChoice">Sort</label>
+            <select id="movieSort" class="dropdown-select" onchange="movieSortForSwipeList()">
+                <option value="">Any Sort</option>
+                <option value="vote_average.desc">Best rated</option>
+                <option value="vote_average.asc">Worst rated</option>
+                <option value="vote_count.desc">Most rated</option>
+                <option value="vote_count.asc">Least rated</option>
+                <option value="primary_release_date.desc">Newest</option>
+                <option value="primary_release_date.asc">Oldest</option>
+                <option value="popularity.desc">Most popular</option>
+                <option value="popularity.asc">Least popular</option>
+                <option value="revenue.desc">Most revenue</option>
+                <option value="revenue.asc">Least revenue</option>
+            </select>
+        </div>
       <div class="swipelist-button-div">
         <button class="btn swipelist-button toggle-swipe" type="button"
                 onclick="getSwipeListAndThenRenderMovie()">Go to
@@ -62,30 +78,30 @@
   </div>
 </div>
 <div>
-  <div id="movieCardBtnLikeDislike" class="movie-card-btn-like-dislike">
-    <button id="btnLike" class="btn btn-like" onclick="renderNextMovie(true)">✓</button>
-    <button id="btnDislike" class="btn btn-dislike" onclick="renderNextMovie(false)">X</button>
-  </div>
-  <div id="movieSwiper" class="movie-swiper">
-    <div class="movie-card">
+    <div id="movieCardBtnLikeDislike" class="movie-card-btn-like-dislike">
+        <button id="btnLike" class="btn btn-like" onclick="renderNextMovie(true)">✓</button>
+        <button id="btnDislike" class="btn btn-dislike" onclick="renderNextMovie(false)">X</button>
+    </div>
+    <div id="movieSwiper" class="movie-swiper">
+        <div class="movie-card">
 
-      <div class="movie-card-body">
+            <div class="movie-card-body">
 
-        <div class="movie-card-poster">
-          <img src="" id="moviePoster" class="movie-poster"/>
-        </div>
+                <div class="movie-card-poster">
+                    <h2 id="movieTitle"></h2>
+                    <img src="" id="moviePoster" class="movie-poster"/>
+                </div>
 
 
-        <div class="movie-card-btn-flip">
-          <button class="btn btn-mt" onclick="flipCard()">More info</button>
-        </div>
-
+                <div class="movie-card-btn-flip">
+                    <button class="btn btn-mt" onclick="flipCard()">More info</button>
+                </div>
       </div>
 
       <div class="movie-card-body movie-card-body-back">
 
         <div class="movie-card-trailer">
-          <iframe type="align-center" width="560" height="315" src="" id="movieTrailer" frameborder="0"
+          <iframe src="" id="movieTrailer" autofocus="autofocus" frameborder="0"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowfullscreen></iframe>
         </div>

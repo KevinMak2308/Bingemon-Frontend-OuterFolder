@@ -46,9 +46,8 @@
                     </select>
                 </div>
             </div>
-            <div class="row">
                 <div class="col-sm-12">
-                    <label class="select-label" for="seriesLanguageChoice">Language</label>
+                    <label class="select-label" for="seriesLanguageChoice">Sort</label>
                     <select id="seriesSort" class="dropdown-select" onchange="seriesSortForSwipeList()">
                         <option value="">Any Sort</option>
                         <option value="vote_average.desc">Best rated</option>
@@ -59,7 +58,6 @@
                         <option value="popularity.asc">Least popular</option>
                     </select>
                 </div>
-            </div>
             <div class="swipelist-button-div">
                 <button class="btn swipelist-button toggle-swipe" type="button"
                         onclick="getSwipeListAndThenRenderSeries()">Go to
@@ -78,6 +76,7 @@
         <div class="movie-card">
             <div class="movie-card-body">
                 <div class="movie-card-poster">
+                    <h2 id="seriesTitle"></h2>
                     <img src="" id="seriesPoster" class="movie-poster"/>
                 </div>
                 <div class="movie-card-btn-flip">
@@ -86,46 +85,40 @@
             </div>
             <div class="movie-card-body movie-card-body-back">
                 <div class="movie-card-trailer">
-                    <iframe type="align-center" width="560" height="315" src="" id="seriesTrailer" frameborder="0"
+                    <iframe src="" id="seriesTrailer" autofocus="autofocus" frameborder="0"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                            allowfullscreen autofocus="true"></iframe>
+                            allowfullscreen></iframe>
                 </div>
 
               <div class="container">
                 <div class="row">
                   <div class="col">
                     <div class="movie-card-rating">
-                      <label class="select-label" for="seriesRating">TMDB rating: </label>
+                      <label class="select-label" for="seriesRating">TMDB rating:</label>
                       <p id="seriesRating"></p>
                     </div>
                   </div>
                   <div class="col">
                     <div class="movie-card-runtime">
-                      <label class="select-label" for="seriesRuntime">Episode runtime: </label>
+                      <label class="select-label" for="seriesRuntime">Runtime:</label>
                       <p id="seriesRuntime"></p>
                     </div>
                   </div>
                   <div class="col">
                     <div class="movie-card-release">
-                      <label class="select-label" for="seriesRelease">Released: </label>
+                      <label class="select-label" for="seriesRelease">Released:</label>
                       <p id="seriesRelease"></p>
                     </div>
                   </div>
                   <div class="col">
-                    <div class="movie-card-releaseEnd">
-                      <label class="select-label" for="seriesReleaseEnd">Last release: </label>
-                      <p id="seriesReleaseEnd"></p>
-                    </div>
-                  </div>
-                  <div class="col">
                     <div class="movie-card-episodes">
-                      <label class="select-label" for="seriesEpisodes">Number of episodes: </label>
+                      <label class="select-label" for="seriesEpisodes">Episodes:</label>
                       <p id="seriesEpisodes"></p>
                     </div>
                   </div>
                   <div class="col">
                     <div class="movie-card-seasons">
-                      <label class="select-label" for="seriesSeasons">Number of seasons: </label>
+                      <label class="select-label" for="seriesSeasons">Seasons:</label>
                       <p id="seriesSeasons"></p>
                     </div>
                   </div>
@@ -133,12 +126,12 @@
               </div>
 
                 <div class="movie-card-description">
-                  <label class="select-label" for="seriesCast">Plot: </label>
+                  <label class="select-label" for="seriesCast">Plot:</label>
                     <p id="seriesOverview"></p>
                 </div>
 
               <div class="movie-card-cast">
-                <label class="select-label" for="seriesCast">Cast: </label>
+                <label class="select-label" for="seriesCast">Cast:</label>
                 <p id="seriesCast"></p>
               </div>
 
