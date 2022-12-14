@@ -70,6 +70,7 @@ function movieGenreData(data) {
 
             newURLParams.set('genres', optionIndex.value)
             url.search = newURLParams.toString()
+            
         })
     }
 }
