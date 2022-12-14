@@ -29,12 +29,13 @@
 </section>
 
 <section>
-  <h1> My FriendList</h1>
+
   <div class="container">
     <div class="row">
       <div class="col-sm-12">
+        <h1> My FriendList</h1>
         <div class="friends-container">
-
+          <button class="add-friends"> Add Friends</button>
         </div>
       </div>
     </div>
@@ -74,6 +75,24 @@
     </div>
   </div>
 </section>
+
+<div class="friends-modal">
+  <div class="modal-content">
+    <form class="login-form" action="">
+      <div class="close-modal"><span class="close-sign-up close">✖</span></div>
+    <div class="add-friend">
+      <h2 class="form-h2">Add Friends</h2>
+    <input class="friend-search-input" type="text" placeholder="Username">
+      <button class="btn login-form-btn" type="" title="Sign up" onclick="fetchAddFriend()"> Add friend</button>
+    </div>
+    <div class="received-friend-request-content">
+
+    </div>
+    <div class="received-friend-sended-content">
+    </div>
+    </form>
+  </div>
+</div>
 
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
