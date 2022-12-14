@@ -16,4 +16,14 @@
   object-fit: cover;
 }
 
+.friends-modal{
+  position: absolute;
+  top: 0%;
+  margin: auto;
+  
+  height: 100vh;
+  width: 100%;
+  background: rgba(60, 77, 108, 0.3);
+  z-index: 1;
+}
 
