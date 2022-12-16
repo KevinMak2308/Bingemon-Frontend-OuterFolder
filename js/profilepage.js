@@ -23,6 +23,7 @@ const friendRequestUrl = 'http://localhost:8080/api/auth/friendrequest/'
 const friendRequestsRecivedUrl = `http://localhost:8080/api/auth/friendRequestsReceived/${cookieSplitter()}`
 const friendRequestsSendedUrl = `http://localhost:8080/api/auth/friendRequestsSended/${cookieSplitter()}`
 const acceptFriendRequestUrl = "http://localhost:8080/api/auth/friendrequest"
+const regretFriendRequestUrl = "http://localhost:8080/api/auth/friendrequest/"
 
 function fetchUserProfile() {
   fetch(url)
@@ -198,12 +199,13 @@ function fetchFriendRequestRecievedData(data) {
     console.log("single Friend request", friendRequest)
     console.log("username!!!!!!!!!!!", friendRequest.sender.username)
     $(".received-friend-request-content").append("<div id='" + friendRequest.sender.username + "' class='friendrequest-container'></div>")
-    $("#" + friendRequest.sender.username).append("<p>" + friendRequest.sender.username + "</p>" + "<button class='accept' id='" + friendRequest.id + "' data-sender='"+friendRequest.sender.id+"' data-recipient='"+friendRequest.recipient.id+"' type='button'>" + "yes" + "</button>" + "<button>" + "no" + "</button>")
+    $("#" + friendRequest.sender.username).append("<p>" + friendRequest.sender.username + "</p>" + "<button class='accept' id='" + friendRequest.id + "' data-sender='"+friendRequest.sender.id+"' data-recipient='"+friendRequest.recipient.id+"' type='button'>" + "yes" + "</button>" + "<button class='decline' data-friendRequestId='"+friendRequest.id+"'>" + "no" + "</button>")
 
     console.log("this is friend requests recieved", data)
   }
 
   $(".accept").click(function () {
+    window.location.reload()
     let friendRequestId = $(this).attr("id")
     console.log("freindrequestid", friendRequestId)
     let senderId = $(this).attr("data-sender")
@@ -237,12 +239,24 @@ function fetchFriendRequestRecievedData(data) {
       .catch(error => console.log(error))
   })
 
+  $(".decline").click(function (){
+    const friendRequestId = $(".decline").attr("data-friendRequestId")
+    let deleteFriendRequest = {
+      method: "DELETE",
+      headers: {
+        "content-type": "application/json"
+      }
+    }
+
+    console.log(deleteFriendRequest)
+    return fetch(regretFriendRequestUrl + friendRequestId, deleteFriendRequest)
+      // .then(response => response.json())
+      //.then(data => console.log(data))
+      .catch(error => console.log(error))
+      .then(window.location.reload())
+  })
+
 }
-
-
-
-
-
 
 function fetchFriendrequestsSended() {
 
@@ -256,8 +270,40 @@ function fetchFriendrequestsSended() {
     .then(fetchFriendRequestSendedData)
 }
 
+
 function fetchFriendRequestSendedData(data) {
-  console.log("this is Friend requests sended", data)
+  for (let i = 0; i < data.length; i++) {
+    friendRequest = data[i]
+    $(".received-friend-sended-content").append("<div id='" + friendRequest.sender.username + "' class='friendrequest-container'></div>")
+    $("#" + friendRequest.sender.username).append("<p>" + friendRequest.recipient.username + "</p>" + "<button class='regret' id='" + friendRequest.id + "' data-sender='"+friendRequest.sender.id+"' data-recipient='"+friendRequest.recipient.id+"' type='button'>" + "X" + "</button>")
+
+    console.log("this is friend requests sended", data)
+
+  }
+
+  $(".regret").click(function () {
+    window.location.reload()
+    let friendRequestId = $(this).attr("id")
+    console.log("freindrequestid", friendRequestId)
+    let senderId = $(this).attr("data-sender")
+    console.log("senderid", senderId)
+    let recipientId = $(this).attr("data-recipient")
+    console.log("recipientid", recipientId)
+
+
+    let deleteFriendRequest = {
+      method: "DELETE",
+      headers: {
+        "content-type": "application/json"
+      }
+    }
+
+    console.log(deleteFriendRequest)
+    return fetch(regretFriendRequestUrl + friendRequestId, deleteFriendRequest)
+     // .then(response => response.json())
+      //.then(data => console.log(data))
+      .catch(error => console.log(error))
+  })
 
 }
 
