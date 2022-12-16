@@ -23,6 +23,9 @@ $(".sign-up-btn").click(function () {
 $(".close-sign-up").click(function () {
   $(".sign-up-modal").toggle()
 })
+$(".close-sign-up").click(function () {
+  $(".friends-modal").toggle()
+})
 
 //closes login modal and open sign up modal
 

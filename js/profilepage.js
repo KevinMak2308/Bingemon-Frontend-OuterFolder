@@ -1,6 +1,10 @@
-jQuery(document).ready(function(){
+jQuery(document).ready(function () {
   jQuery("#navigation").load("header.html");
 });
+
+if (!document.cookie) {
+  window.location.href = "frontpage.html"
+}
 
 $(".add-friends").click(function () {
   $(".friends-modal").toggle()
@@ -11,7 +15,7 @@ function cookieSplitter() {
   let userCookie = document.cookie;
   let cookiearray = userCookie.split(';').find((row) => row.startsWith('User='))?.split('=')[1]
   console.log(cookiearray)
- return cookiearray
+  return cookiearray
 }
 
 const url = `http://localhost:8080/api/auth/user/${cookieSplitter()}`
@@ -20,13 +24,14 @@ const userSeriesListUrl = `http://localhost:8080/api/auth/user-series-list/${coo
 const friendListUrl = `http://localhost:8080/api/auth/friends/${cookieSplitter()}`
 const findFriendUrl = 'http://localhost:8080/api/auth/username/'
 const friendRequestUrl = 'http://localhost:8080/api/auth/friendrequest/'
-const friendRequestsRecivedUrl= `http://localhost:8080/api/auth/friendRequestsReceived/${cookieSplitter()}`
-const friendRequestsSendedUrl= `http://localhost:8080/api/auth/friendRequestsSended/${cookieSplitter()}`
+const friendRequestsRecivedUrl = `http://localhost:8080/api/auth/friendRequestsReceived/${cookieSplitter()}`
+const friendRequestsSendedUrl = `http://localhost:8080/api/auth/friendRequestsSended/${cookieSplitter()}`
 const acceptFriendRequestUrl = "http://localhost:8080/api/auth/friendrequest"
+
 function fetchUserProfile() {
   fetch(url)
     .then((response) => {
-      if(response.ok) {
+      if (response.ok) {
         return response.json()
       }
       throw new Error("Login Failed!")
@@ -42,7 +47,7 @@ function userProfileData(data) {
 function fetchUserMovieId() {
   fetch(userMovieListUrl)
     .then((response) => {
-      if(response.ok) {
+      if (response.ok) {
         return response.json()
       }
       throw new Error("Failed to fetch user movies id list")
@@ -51,7 +56,7 @@ function fetchUserMovieId() {
     .catch(error => console.log(error));
 }
 
- async function userMovieListId(data) {
+async function userMovieListId(data) {
 
 
   for (let i = 0; i < data.length; i++) {
@@ -60,15 +65,15 @@ function fetchUserMovieId() {
 
     await fetch(`http://localhost:8080/api/auth/${userMovieId}`)
       .then((response) => {
-        if(response.ok) {
+        if (response.ok) {
           return response.json()
         }
         throw new Error("Failed to Retrieve Movie!")
       })
-      .then(function(data) {
-        $(".movies-container").append("<div id='"+userMovieId+"' class='movie-container'></div>")
-        $("#" + userMovieId).append('<img src=\"https://image.tmdb.org/t/p/w500/' +data.poster_path+ '\"/>')
-        })
+      .then(function (data) {
+        $(".movies-container").append("<div id='" + userMovieId + "' class='movie-container'></div>")
+        $("#" + userMovieId).append('<img src=\"https://image.tmdb.org/t/p/w500/' + data.poster_path + '\"/>')
+      })
       .catch(error => console.log(error));
   }
 }
@@ -77,7 +82,7 @@ function fetchUserMovieId() {
 function fetchUserSeriesId() {
   fetch(userSeriesListUrl)
     .then((response) => {
-      if(response.ok) {
+      if (response.ok) {
         return response.json()
       }
       throw new Error("Failed to fetch user series id list")
@@ -95,26 +100,24 @@ async function userSeriesListId(data) {
 
     await fetch(`http://localhost:8080/api/auth/series/${userSeriesId}`)
       .then((response) => {
-        if(response.ok) {
+        if (response.ok) {
           return response.json()
         }
         throw new Error("Failed to Retrieve serie!")
       })
-      .then(function(data) {
+      .then(function (data) {
         console.log("Does it fetch a single serie? ", data)
-        $(".series-container").append("<div id='"+userSeriesId+"' class='serie-container'></div>")
-        $("#" + userSeriesId).append('<img src=\"https://image.tmdb.org/t/p/w500/' +data.poster_path+ '\"/>')
+        $(".series-container").append("<div id='" + userSeriesId + "' class='serie-container'></div>")
+        $("#" + userSeriesId).append('<img src=\"https://image.tmdb.org/t/p/w500/' + data.poster_path + '\"/>')
       })
       .catch(error => console.log(error));
   }
 }
 
-
-
-function fetchFriendList(){
+function fetchFriendList() {
   fetch(friendListUrl)
     .then((response) => {
-      if(response.ok) {
+      if (response.ok) {
         return response.json()
       }
       throw new Error("Failed to fetch user friend list")
@@ -123,28 +126,30 @@ function fetchFriendList(){
     .catch(error => console.log(error));
 }
 
-function  userfriendlistData(data){
-  console.log("this is data: " , data)
+function userfriendlistData(data) {
+  let friendID;
+  console.log("this is data: ", data)
   for (let i = 0; i < data.length; i++) {
+    friendID = data[i].id
     let friend = data[i]
     console.log(friend)
-    $(".friends-container").append("<div id='"+friend.id+"' class='friend-container'></div>")
-    $("#" + friend.id).append("<a href='friendprofilepage.html'>" +friend.username+ "</a>")
+    $(".friends-container").append("<div id='" + friend.id + "' class='friend-container'></div>")
+    $("#" + friend.id).append("<a href='friendprofilepage.html'>" + friend.username + "</a>")
 
   }
 
-  $(".friend-container").click( function () {
+  $(".friend-container").click(function () {
     let friendId = $(this).attr("id")
     document.cookie = "Friend=" + friendId
   });
 
 }
 
-function fetchAddFriend(){
+function fetchAddFriend() {
   let searchInput = $('.friend-search-input').val()
-  fetch(findFriendUrl+searchInput)
+  fetch(findFriendUrl + searchInput)
     .then((response) => {
-      if (response.ok){
+      if (response.ok) {
         return response.json()
       }
       throw new Error("failed to find user")
@@ -152,10 +157,10 @@ function fetchAddFriend(){
     .then(fetchAddFriendData)
 }
 
-function fetchAddFriendData (data){
+function fetchAddFriendData(data) {
   let searchedUser = data
 
-  console.log( searchedUser)
+  console.log(searchedUser)
   let friendRequest = {
     method: "POST",
     headers: {
@@ -164,9 +169,9 @@ function fetchAddFriendData (data){
     body: JSON.stringify({
       "status": "false",
       "sender": {
-        "id":cookieSplitter()
+        "id": cookieSplitter()
       },
-      "recipient":{
+      "recipient": {
         "id": searchedUser.id
       }
     })
@@ -178,11 +183,10 @@ function fetchAddFriendData (data){
 }
 
 
-function fetchFriendrequestsRecived(){
-
+function fetchFriendrequestsRecived() {
   fetch(friendRequestsRecivedUrl)
     .then((response) => {
-      if (response.ok){
+      if (response.ok) {
         return response.json()
       }
       throw new Error("failed to find user")
@@ -192,66 +196,63 @@ function fetchFriendrequestsRecived(){
 
 
 //metode virker ikke, venner bliver ikke tilføjet i databasen.hmmmmm
-function fetchFriendRequestRecievedData(data){
+function fetchFriendRequestRecievedData(data) {
   for (let i = 0; i < data.length; i++) {
     friendRequest = data[i]
-    console.log("single Friend request",friendRequest)
-    console.log("username!!!!!!!!!!!",friendRequest.sender.username)
-    $(".received-friend-request-content").append("<div id='"+friendRequest.sender.username+"' class='friendrequest-container'></div>")
-    $("#" + friendRequest.sender.username).append("<p>" +friendRequest.sender.username+ "</p>" + "<button id='"+friendRequest.id+"' type='button'>" +"yes"+ "</button>"+"<button>" +"no"+ "</button>")
-    $("#"+friendRequest.id).click(function (){
-      let putFriendRequest = {
-        method: "PUT",
-        headers: {
-          "content-type": "application/json"
-        },
-        body: JSON.stringify({
-          "friendrequest":{
-          "id": friendRequest.id,
-          "status": "true"
-          }
-        })
-      }
+    console.log("single Friend request", friendRequest)
+    console.log("username!!!!!!!!!!!", friendRequest.sender.username)
+    $(".received-friend-request-content").append("<div id='" + friendRequest.sender.username + "' class='friendrequest-container'></div>")
+    $("#" + friendRequest.sender.username).append("<p>" + friendRequest.sender.username + "</p>" + "<button class='accept' id='" + friendRequest.id + "' data-sender='"+friendRequest.sender.id+"' data-recipient='"+friendRequest.recipient.id+"' type='button'>" + "yes" + "</button>" + "<button>" + "no" + "</button>")
 
-      return fetch(acceptFriendRequestUrl+"/"+friendRequest.id, putFriendRequest)
-        .then(response => response.json())
-        .catch(error => console.log(error))
-    })
-
-
+    console.log("this is friend requests recieved", data)
   }
 
-  $(".friendrequest-container").click( function () {
-    let requestId = $(this).attr("id")
+  $(".accept").click(function () {
+    let friendRequestId = $(this).attr("id")
+    console.log("freindrequestid", friendRequestId)
+    let senderId = $(this).attr("data-sender")
+    console.log("senderid", senderId)
+    let recipientId = $(this).attr("data-recipient")
+    console.log("recipientid", recipientId)
+
+
     let putFriendRequest = {
       method: "PUT",
       headers: {
         "content-type": "application/json"
       },
-      body: JSON.stringify({
-        "friendrequest":{
-          "id": requestId.id,
-          "status": "true"
+      body: JSON.stringify
+      ({
+        "id": friendRequestId,
+        "status": true,
+        "sender": {
+          "id": senderId
+        },
+        "recipient": {
+          "id": recipientId
         }
       })
     }
 
-    return fetch(acceptFriendRequestUrl+"/"+requestId.id, putFriendRequest)
+    console.log(putFriendRequest)
+    return fetch(acceptFriendRequestUrl + "/" + friendRequestId, putFriendRequest)
       .then(response => response.json())
+      .then(data => console.log(data))
       .catch(error => console.log(error))
+  })
 
-  });
-
-  console.log("this is friend requests recieved", data)
 }
 
 
 
-function fetchFriendrequestsSended(){
+
+
+
+function fetchFriendrequestsSended() {
 
   fetch(friendRequestsSendedUrl)
     .then((response) => {
-      if (response.ok){
+      if (response.ok) {
         return response.json()
       }
       throw new Error("failed to find friend Requets sendend")
@@ -259,13 +260,10 @@ function fetchFriendrequestsSended(){
     .then(fetchFriendRequestSendedData)
 }
 
-function fetchFriendRequestSendedData(data){
+function fetchFriendRequestSendedData(data) {
   console.log("this is Friend requests sended", data)
 
 }
-
-
-
 
 
 fetchUserProfile()
