@@ -49,6 +49,14 @@
   display: none;
 }
 
+.profile-btn {
+  display: none;
+}
+
+.logout-btn {
+  display: none;
+}
+
 .header img {
     max-height: 50px;
 }
