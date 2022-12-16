@@ -18,18 +18,8 @@ function flipCard() {
     });
 };
 
-function cookieSplitter() {
-    let userCookie = document.cookie;
-    let cookiearray = userCookie.split(';');
-    let key = "";
-    let value = "";
-
-    for (let i = 0; i < cookiearray.length; i++) {
-        key = cookiearray[i].split('=')[0];
-        value = cookiearray[i].split('=')[1];
-    }
-    return value;
-}
+const userCookie = document.cookie.split(";").find((row) =>
+    row.startsWith("User="))?.split("=")[1];
 
 const basicUrl = "http://localhost:8080/"
 const url = new URL(basicUrl + "api/auth/movie-multi-filter")
@@ -70,7 +60,7 @@ function movieGenreData(data) {
 
             newURLParams.set('genres', optionIndex.value)
             url.search = newURLParams.toString()
-            
+
         })
     }
 }
@@ -185,7 +175,7 @@ let movieList;
 let currentIndex = 0;
 
 
-const addMovieUrl = basicUrl + "api/auth/userMovieList/" + cookieSplitter()
+const addMovieUrl = basicUrl + "api/auth/userMovieList/" + userCookie;
 
 async function addMovie(movieID) {
     let postMovieRequest = {

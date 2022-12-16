@@ -352,12 +352,13 @@ body {
 
 }
 
-.movie-details .container {
-    padding: 0 !important;
-}
-
 .movie-details {
     color: white;
+    overflow: hidden;
+}
+
+.movie-details .container {
+    padding: 0 !important;
 }
 
 .backdrop-div {

@@ -18,18 +18,8 @@ function flipCard() {
     });
 };
 
-function cookieSplitter() {
-    let userCookie = document.cookie;
-    let cookiearray = userCookie.split(';');
-    let key = "";
-    let value = "";
-
-    for (let i = 0; i < cookiearray.length; i++) {
-        key = cookiearray[i].split('=')[0];
-        value = cookiearray[i].split('=')[1];
-    }
-    return value;
-}
+const userCookie = document.cookie.split(";").find((row) =>
+    row.startsWith("User="))?.split("=")[1];
 
 const basicUrl = "http://localhost:8080/"
 const url = new URL(basicUrl + "api/auth/series/series-multi-filter")
@@ -142,7 +132,7 @@ let pageNumbers = 1;
 let seriesList;
 let currentIndex = 0;
 
-const addSeriesUrl = basicUrl + "api/auth/user-series-list/" + cookieSplitter()
+const addSeriesUrl = basicUrl + "api/auth/user-series-list/" + userCookie;
 
 async function addSeries(seriesID) {
     let postSeriesRequest = {
@@ -236,7 +226,7 @@ async function renderNextSeries(added) {
                 }
 
                 let seriesRuntime = document.getElementById('seriesRuntime')
-                if (data.episode_run_time.length == 0) {
+                if (!data.episode_run_time || data.episode_run_time.length == 0) {
                     seriesRuntime.innerText = "N/A"
                 } else {
                     seriesRuntime.innerText = data.episode_run_time + " min."

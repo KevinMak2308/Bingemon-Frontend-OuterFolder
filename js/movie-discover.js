@@ -6,18 +6,8 @@ if (!document.cookie) {
     window.location.href = "frontpage.html"
 }
 
-function cookieSplitter() {
-    let userCookie = document.cookie;
-    let cookiearray = userCookie.split(';');
-    let key = "";
-    let value = "";
-
-    for (let i = 0; i < cookiearray.length; i++) {
-        key = cookiearray[i].split('=')[0];
-        value = cookiearray[i].split('=')[1];
-    }
-    return value;
-}
+const userCookie = document.cookie.split(";").find((row) =>
+    row.startsWith("User="))?.split("=")[1];
 
 const basicUrl = "http://localhost:8080/"
 const url = new URL(basicUrl + "api/auth/movie-multi-filter")
@@ -53,9 +43,8 @@ function movieGenreData(data) {
         genreOption.innerText = genres.name
         genreOption.setAttribute('value', genres.id)
         movieGenreDropDownSelect.appendChild(genreOption)
-
-
     }
+
     movieGenreDropDownSelect.addEventListener("change", async function(event) {
         const selectIndex = movieGenreDropDownSelect.selectedIndex;
         let optionIndex = movieGenreDropDownSelect.options[selectIndex]
@@ -154,7 +143,7 @@ function movieDataBasedOnCriteria(data) {
 const moviePoster = document.getElementById('moviePoster');
 const movieTitle = document.getElementById('movieTitle');
 
-const addMovieUrl = basicUrl + "api/auth/userMovieList/" + cookieSplitter()
+const addMovieUrl = basicUrl + "api/auth/userMovieList/" + userCookie;
 
 async function addMovie(movieID) {
     let postMovieRequest = {

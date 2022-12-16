@@ -1,11 +1,15 @@
 const movieCookie = document.cookie.split(";").find((row) =>
     row.startsWith(" Movie="))?.split("=")[1];
 
+const userCookie = document.cookie.split(";").find((row) =>
+    row.startsWith("User="))?.split("=")[1];
+
 const url = "http://localhost:8080/api/auth/credits/";
 
 const singleMovieUrl = url + movieCookie;
 
 const movieBackdrop = document.getElementById('movieBackdrop')
+const movieTitle = document.getElementById('movieTitle')
 const movieRating = document.getElementById('movieRating')
 const movieRuntime = document.getElementById('movieRuntime')
 const movieRelease = document.getElementById('movieRelease')
@@ -28,6 +32,13 @@ function movieDetails(data) {
     const movieBackdropData = data.backdrop_path
     movieBackdrop.setAttribute('src', `https://image.tmdb.org/t/p/original/${movieBackdropData}`)
     movieBackdrop.setAttribute('alt', `${data.title} backdrop`)
+
+    if (!data.title) {
+        movieTitle.innerText = "N/A";
+    } else {
+        movieTitle.innerText = data.title
+    }
+
     if (!data.vote_average) {
         movieRating.innerText = "N/A";
     } else {
@@ -68,6 +79,22 @@ function movieDetails(data) {
         }
     }
     console.log(movieCookie);
+}
+
+const addMovieUrl = "http://localhost:8080/api/auth/userMovieList/" + userCookie;
+
+async function addMovieToUserMovieList(movieID) {
+    let postMovieRequest = {
+        method: "POST",
+        headers: {
+            "content-type": "application/json",
+        },
+        body: movieID
+    }
+
+    return fetch(addMovieUrl, postMovieRequest)
+        .then(response => response.json())
+        .catch(error => console.log(error))
 }
 
 fetchSingleMovie();
