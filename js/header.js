@@ -42,17 +42,20 @@ $(".home-nav").click(function () {
 })
 
 // open login modal
-$(".login-btn").click(function () {
-  $(".sign-up-modal").hide()
-  $(".login-modal").toggle()
-})
+  $(".header-right .login-btn").click(function () {
+    $(".sign-up-modal").hide()
+    $(".login-modal").toggle()
+  })
+
+
+
 
 $(".close-login").click(function () {
   $(".login-modal").toggle()
 })
 
 //open signup modal
-$(".sign-up-btn").click(function () {
+$(".header-right .sign-up-btn").click(function () {
   $(".login-modal").hide()
   $(".sign-up-modal").toggle()
 })

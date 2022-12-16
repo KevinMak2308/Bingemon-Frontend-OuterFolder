@@ -1,62 +1,132 @@
-.header {
-  overflow: hidden;
-  background-color: #161E30;
+body {
+  background: #212121;
+  font-size:22px;
+  line-height: 32px;
+  color: #ffffff;
+  word-wrap:break-word !important;
+  font-family: 'Open Sans', sans-serif;
+}
+
+h3 a {
+  color: #FFF;
+}
+
+.header a {
+  color: #FFF;
+}
+header a:hover {
+  color: #007CC7;
+}
+
+#container {
+  margin: 0 auto;
+}
+
+p {
+  text-align: center;
+}
+
+nav {
+  background-color: #161E30 !important;
   padding: 20px 10px;
   box-shadow: rgba(0, 0, 0, 0.25) 0px 4px 8px -2px, rgba(0, 0, 0, 0.25) 0px 4px 8px -2px;
 }
 
-/* Style the header links */
-.header a {
-  color: #FFFFFF;
-  float: left;
-  text-align: center;
-  padding: 12px;
-  text-decoration: none;
-  font-size: 18px;
-  line-height: 25px;
-  border-radius: 4px;
+nav ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  position: relative;
+}
+
+nav ul li {
+  display:inline-block;
+  background-color: #141E30;
+}
+
+nav a {
+  display:block;
+  padding:0 10px;
+  color:#FFF;
+  font-size:20px;
+  line-height: 60px;
+  text-decoration:none;
   cursor: pointer;
 }
 
-/* Style the logo link (notice that we set the same value of line-height and font-size to prevent the header to increase when the font gets bigger */
-.header a.logo {
-  font-size: 25px;
-  font-weight: bold;
-}
-
-/* Change the background color on mouse-over */
-.header a:hover {
-  color: #4DA8DA;
-}
-
-/* Style the active/current link*/
-.header a.active {
-  background-color: #007CC7;
-  color: white;
-}
-
-.header a.active:hover {
-  background-color: #4DA8DA;
-  color: navy;
-}
-
-/* Float the link section to the right */
-.header-right {
-  float: right;
-}
-
-.swipelist-btn, .profile-btn {
+nav ul ul {
   display: none;
+  position: absolute;
+  box-shadow: rgb(0 0 0 / 35%) 0px 5px 15px;
+
 }
 
-.profile-btn {
-  display: none;
+nav ul li:hover > ul {
+  display:inherit;
+  z-index: 999;
 }
 
-.logout-btn {
-  display: none;
+nav ul ul li {
+  width:170px;
+  float:none;
+  display:list-item;
+  position: relative;
+  background-color: #293d62;
+
+}
+
+nav ul ul ul li {
+  position: relative;
+  top:-60px;
+  left:170px;
 }
 
 .header img {
-    max-height: 50px;
+  max-height: 50px;
 }
+
+.header .logo-a-tag:hover {
+  background-color: unset;
+}
+
+.profile-nav {
+
+}
+
+.header nav ul li a {
+  position: relative;
+}
+.header-right{
+  float: right;
+  padding-right: 30px;
+  display: flex;
+}
+.header-right li .fa-caret-down{
+  transition: all 0.3s ease-in-out;
+}
+
+.header-right li:hover .fa-caret-down{
+  transform: rotate(180deg);
+
+}
+
+.header-right li a:hover::before {
+  width: 100%;
+}
+
+.header-right li a::before {
+  content: "";
+  width: 0;
+  height: 2px;
+  background-color: #007CC7;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  transition: width 0.3s ease;
+}
+
+.swipelist-btn, .profile-btn, .logout-btn {
+  display: none;
+}
+
+

@@ -1,17 +1,40 @@
 <div class="header">
-    <a class="home-nav logo" href="frontpage.html">
-        <img class="poster" src="./img/white-logo-no-background.png" alt="Avatar 2 poster">
-    </a>
-    <div class="header-right">
-      <a class="home-nav active" href="frontpage.html">Home</a>
-      <a class="profile-btn" href="profilepage.html">Profile </a>
-      <a class="login-btn">Login</a>
-      <a class="sign-up-btn">Sign up</a>
-      <a class="swipelist-btn" href="movie.html">Movie Swipelist</a>
-      <a class="swipelist-btn" href="series.html">Series Swipelist</a>
-      <a class="logout-btn" href="frontpage.html">Log out</a>
-    </div>
+  <div id="container">
+    <nav>
+      <ul>
+        <li>
+          <a class="logo-a-tag" href="frontpage.html">
+            <img class="poster" src="./img/white-logo-no-background.png" alt="Bingemon logo">
+          </a>
+        </li>
+        <div class="header-right">
+        <li class="swipelist-btn"><a href="movie.html"><i class="fa fa-film"></i> Movies <i class="fa fa-caret-down"></i></a>
+          <ul>
+            <li><a href="movie.html"> Movie Swipelist</a></li>
+            <li><a href="discover-movies.html"> Discover Movies</a></li>
+          </ul>
+        </li>
+        <li class="swipelist-btn"><a href="series.html"><i class="fa fa-television"></i> Series <i class="fa fa-caret-down"></i></a>
+          <ul>
+            <li><a href="series.html"> Series Swipelist</a></li>
+            <li><a href="discover-series.html"> Discover Series</a></li>
+          </ul>
+        </li>
+        <li class="swipelist-btn"><a href="#">About</a></li>
+        <li class=""><a class="login-btn">Login</a></li>
+        <li class=""><a class="sign-up-btn">Sign up</a></li>
+        <li class="swipelist-btn"><a class="profile-nav" href="profilepage.html"><i class="fa fa-user"></i> Profile <i class="fa fa-caret-down"></i></a>
+          <ul>
+            <li><a href="#"><i class="fa fa-sign-out"></i> Log out</a></li>
+          </ul>
+        </li>
+        </div>
+      </ul>
+    </nav>
+  </div>
 </div>
 
+<script src="https://use.fontawesome.com/5891bbc511.js"></script>
 <script src="js/header.js"></script>
+
 

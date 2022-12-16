@@ -1,4 +1,4 @@
-h1, h2, h3, p, span, li {
+h1, h2, h3, p, li {
   color: #FFFFFF;
   font-family: poppins, sans-serif;
 }
@@ -144,12 +144,12 @@ h1, h2, h3 {
 .not-signed-up {
   text-align: center;
   color: white;
-  text-decoration-line: underline;
+  font-size: 16px;
   cursor: pointer;
 }
 
 .not-signed-up:hover {
-  color: #4DA8DA;
+  color: #4DA8DA !important;
 }
 
 .sign-up-modal{
