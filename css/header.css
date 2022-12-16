@@ -45,7 +45,7 @@
   float: right;
 }
 
-.swipelist-btn {
+.swipelist-btn, .profile-btn {
   display: none;
 }
 

@@ -1,9 +1,6 @@
 const movieCookie = document.cookie.split(";").find((row) =>
     row.startsWith(" Movie="))?.split("=")[1];
 
-const userCookie = document.cookie.split(";").find((row) =>
-    row.startsWith("User="))?.split("=")[1];
-
 const url = "http://localhost:8080/api/auth/credits/";
 
 const singleMovieUrl = url + movieCookie;

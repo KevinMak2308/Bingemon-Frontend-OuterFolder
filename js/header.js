@@ -1,3 +1,17 @@
+const userCookieChecker = document.cookie.split(";").find((row) =>
+    row.startsWith("User="))?.split("=")[1];
+
+if (!userCookieChecker && !window.location.href === "frontpage.html") {
+    window.location.href = "frontpage.html";
+}
+
+if(userCookieChecker) {
+    $(".login-btn").hide()
+    $(".sign-up-btn").hide()
+    $(".swipelist-btn").show()
+    $(".profile-btn").show()
+}
+
 // import header fragment // virker ikke nu
 $(".home-nav").click(function () {
   $(".sign-up-modal").hide()
@@ -54,8 +68,4 @@ $(document).click(function(event) {
   }
 });
 
-if(document.cookie) {
-  $(".login-btn").hide()
-  $(".sign-up-btn").hide()
-  $(".swipelist-btn").show()
-}
+

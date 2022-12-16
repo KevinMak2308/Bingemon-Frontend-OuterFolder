@@ -2,10 +2,6 @@ jQuery(document).ready(function () {
     jQuery("#navigation").load("header.html");
 });
 
-if (!document.cookie) {
-    window.location.href = "frontpage.html";
-}
-
 const userCookie = document.cookie.split(";").find((row) =>
     row.startsWith("User="))?.split("=")[1];
 
@@ -158,7 +154,8 @@ function discoverSeriesOnSearch(data) {
         const discoverSeriesATag = document.createElement("a");
         const discoverSeriesPoster = document.createElement("img");
         let discoverSeriesPosterData = series.poster_path;
-        if (!discoverSeriesPosterData) {
+        let discoverSeriesBackdropData = series.backdrop_path;
+        if (!discoverSeriesPosterData || !discoverSeriesBackdropData) {
 
         } else {
             discoverSeriesPoster.setAttribute('src', `https://image.tmdb.org/t/p/w500/${discoverSeriesPosterData}`)

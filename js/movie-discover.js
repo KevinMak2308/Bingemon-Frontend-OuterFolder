@@ -2,10 +2,6 @@ jQuery(document).ready(function () {
     jQuery("#navigation").load("header.html");
 });
 
-if (!document.cookie) {
-    window.location.href = "frontpage.html"
-}
-
 const userCookie = document.cookie.split(";").find((row) =>
     row.startsWith("User="))?.split("=")[1];
 

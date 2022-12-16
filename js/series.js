@@ -2,10 +2,6 @@ jQuery(document).ready(function () {
     jQuery("#navigation").load("header.html");
 });
 
-if (!document.cookie) {
-    window.location.href = "frontpage.html"
-}
-
 $(".toggle-swipe").click(function () {
     $(".movie-swiper").show()
 });

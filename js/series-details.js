@@ -1,6 +1,6 @@
 const seriesCookie = document.cookie.split(";").find((row) =>
     row.startsWith(" Series="))?.split("=")[1];
-console.log(seriesCookie);
+
 const userCookie = document.cookie.split(";").find((row) =>
     row.startsWith("User="))?.split("=")[1];
 
