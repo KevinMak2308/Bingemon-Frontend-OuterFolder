@@ -1,9 +1,16 @@
 const movieCookie = document.cookie.split(";").find((row) =>
     row.startsWith(" Movie="))?.split("=")[1];
 
+const userCookie = document.cookie.split(";").find((row) =>
+  row.startsWith("User="))?.split("=")[1];
+
 const url = "http://localhost:8080/api/auth/credits/";
 
 const singleMovieUrl = url + movieCookie;
+
+const deleteMovieFromUserMovieListUrl = `http://localhost:8080/api/auth/userMovieList/${userCookie}`
+const userMovieListUrl = `http://localhost:8080/api/auth/userMovieList/${userCookie}`
+
 
 const movieBackdrop = document.getElementById('movieBackdrop')
 const movieTitle = document.getElementById('movieTitle')
@@ -80,18 +87,66 @@ function movieDetails(data) {
 
 const addMovieUrl = "http://localhost:8080/api/auth/userMovieList/" + userCookie;
 
-async function addMovieToUserMovieList(movieID) {
+async function addMovieToUserMovieList() {
     let postMovieRequest = {
         method: "POST",
         headers: {
             "content-type": "application/json",
         },
-        body: movieID
+        body: movieCookie
     }
 
     return fetch(addMovieUrl, postMovieRequest)
         .then(response => response.json())
+        .then(window.location.reload())
         .catch(error => console.log(error))
 }
 
+
+function deleteMovieFromUserMovieList() {
+  let deleteMovieFromUserMovieListRequest = {
+    method: "DELETE",
+    headers: {
+      "content-type": "application/json"
+    },
+    body: movieCookie
+  }
+
+  fetch(deleteMovieFromUserMovieListUrl, deleteMovieFromUserMovieListRequest)
+    .then((response) => {
+      if (response.ok) {
+        return response.json()
+      } else
+        throw new Error("Unable to delete movie from User List")
+    })
+    .then(window.location.reload())
+}
+
+function fetchUserMoviesId() {
+  fetch(userMovieListUrl)
+    .then((response) => {
+      if (response.ok) {
+        return response.json()
+      }
+      throw new Error("Failed to fetch user movies id list")
+    })
+    .then(userMoviesIdData)
+    .catch(error => console.log(error));
+}
+
+function userMoviesIdData(data) {
+  let userMoviesId = data;
+
+  if(userMoviesId.includes(Number(movieCookie))) {
+    $(".movie-card-button").append("<button class='delete-movie-from-userlist' type='button'> ✔ </button>")
+    $(".delete-movie-from-userlist").click(deleteMovieFromUserMovieList)
+  }
+  else {
+    $(".movie-card-button").append("<button class='add-movie-from-userlist' type='button'> + </button>")
+    $(".add-movie-from-userlist").click(addMovieToUserMovieList)
+  }
+}
+
+
+fetchUserMoviesId()
 fetchSingleMovie();
