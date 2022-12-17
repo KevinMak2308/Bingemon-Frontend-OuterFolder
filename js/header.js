@@ -30,7 +30,7 @@ function deleteCookie(name) {
   setCookie(name, "", -1);
 }
 
-$(".logout-btn").click(function () {
+$("#logout-btn").click(function () {
   deleteCookie(document.cookie)
   deleteAllCookies()
 })

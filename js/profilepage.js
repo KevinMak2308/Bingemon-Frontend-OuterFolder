@@ -177,6 +177,7 @@ function fetchAddFriendData(data) {
   return fetch(friendRequestUrl, friendRequest)
     .then(response => response.json())
     .catch(error => console.log(error))
+    .then(window.location.reload())
 }
 
 
@@ -199,13 +200,12 @@ function fetchFriendRequestRecievedData(data) {
     console.log("single Friend request", friendRequest)
     console.log("username!!!!!!!!!!!", friendRequest.sender.username)
     $(".received-friend-request-content").append("<div id='" + friendRequest.sender.username + "' class='friendrequest-container'></div>")
-    $("#" + friendRequest.sender.username).append("<p>" + friendRequest.sender.username + "</p>" + "<button class='accept' id='" + friendRequest.id + "' data-sender='"+friendRequest.sender.id+"' data-recipient='"+friendRequest.recipient.id+"' type='button'>" + "yes" + "</button>" + "<button class='decline' data-friendRequestId='"+friendRequest.id+"'>" + "no" + "</button>")
+    $("#" + friendRequest.sender.username).append("<p>" + friendRequest.sender.username + "</p>" + "<button class='accept' id='" + friendRequest.id + "' data-sender='"+friendRequest.sender.id+"' data-recipient='"+friendRequest.recipient.id+"' type='button'>" + "yes" + "</button>" + "<button class='decline' type='button' data-friendRequestId='"+friendRequest.id+"'>" + "no" + "</button>")
 
     console.log("this is friend requests recieved", data)
   }
 
   $(".accept").click(function () {
-    window.location.reload()
     let friendRequestId = $(this).attr("id")
     console.log("freindrequestid", friendRequestId)
     let senderId = $(this).attr("data-sender")
@@ -237,6 +237,7 @@ function fetchFriendRequestRecievedData(data) {
       .then(response => response.json())
       .then(data => console.log(data))
       .catch(error => console.log(error))
+      .then(window.location.reload())
   })
 
   $(".decline").click(function (){
@@ -282,7 +283,6 @@ function fetchFriendRequestSendedData(data) {
   }
 
   $(".regret").click(function () {
-    window.location.reload()
     let friendRequestId = $(this).attr("id")
     console.log("freindrequestid", friendRequestId)
     let senderId = $(this).attr("data-sender")
@@ -303,6 +303,7 @@ function fetchFriendRequestSendedData(data) {
      // .then(response => response.json())
       //.then(data => console.log(data))
       .catch(error => console.log(error))
+      .then(window.location.reload())
   })
 
 }
