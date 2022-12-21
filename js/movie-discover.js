@@ -123,17 +123,28 @@ function movieDataBasedOnCriteria(data) {
     url.search = newURLParams.toString()
   }
   }*/
+  for (let i = 0; i < data.results.length; i++) {
+    const movies = data.results[i];
+    const singleMovieDiv = document.createElement('div');
+    const discoverMovieATag = document.createElement("a");
+    const discoverMoviePoster = document.createElement("img");
+    let discoverMoviePosterData = movies.poster_path;
+    if (!discoverMoviePosterData) {
 
-    for (let i = 0; i < data.results.length; i++) {
-
-        const movies = data.results[i]
-        const movieTable = document.createElement('table');
-        const movietextTable = document.createElement('tbody')
-        movieTable.innerText = "Movie ID/Title: " + movies.id + "/" + movies.title;
-        movietextTable.innerText = "Movie Description: " + movies.overview;
-        discoverMovieDiv.appendChild(movieTable);
-        discoverMovieDiv.appendChild(movietextTable);
+    } else {
+      discoverMoviePoster.setAttribute('src', `https://image.tmdb.org/t/p/w500/${discoverMoviePosterData}`)
+      singleMovieDiv.classList.add("movie-container");
+      discoverMovieATag.append(discoverMoviePoster);
+      discoverMovieATag.classList.add("discover-movie-a");
+      discoverMovieATag.href = "movie-details.html";
+      singleMovieDiv.append(discoverMovieATag);
+      discoverMovieDiv.append(singleMovieDiv);
     }
+    discoverMovieATag.addEventListener("click", async function(event) {
+      document.cookie = "Movie = " + data.results[i].id;
+      console.log("a tag clickity clicked", data.results[i].title);
+    })
+  }
 }
 
 const moviePoster = document.getElementById('moviePoster');

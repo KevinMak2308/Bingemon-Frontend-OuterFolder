@@ -24,32 +24,31 @@ const seriesReviewUrl = basicUrl + "reviews/"
 
 function fetchSeriesGenres() {
     return fetch(genreUrl)
-        .then(data => data.json())
+        .then(response => response.json())
         .then(seriesGenreData)
 }
 
 function seriesGenreData(data) {
-    let genres;
+  let genres;
 
-    for (let i = 0; i < data.length; i++) {
-        genres = data[i]
+  for (let i = 0; i < data.genres.length; i++) {
+    genres = data.genres[i]
 
-        const genreOption = document.createElement('option')
-        genreOption.innerText = genres.name
-        genreOption.setAttribute('value', genres.id)
-        seriesGenreDropDownSelect.appendChild(genreOption)
+    const genreOption = document.createElement('option')
+    genreOption.innerText = genres.name
+    genreOption.setAttribute('value', genres.id)
+    seriesGenreDropDownSelect.appendChild(genreOption)
+  }
 
+  seriesGenreDropDownSelect.addEventListener("change", async function(event) {
+    const selectIndex = seriesGenreDropDownSelect.selectedIndex;
+    let optionIndex = seriesGenreDropDownSelect.options[selectIndex]
+    genres.id = optionIndex.value
 
-    }
-    seriesGenreDropDownSelect.addEventListener("change", async function(event) {
-        const selectIndex = seriesGenreDropDownSelect.selectedIndex;
-        let optionIndex = seriesGenreDropDownSelect.options[selectIndex]
-        genres.id = optionIndex.value
-
-        newURLParams.set('genres', optionIndex.value)
-        url.search = newURLParams.toString()
-        await fetchSeriesForSwipeList()
-    })
+    newURLParams.set('genres', optionIndex.value)
+    url.search = newURLParams.toString()
+    await fetchSeriesForSwipeList()
+  })
 }
 
 function seriesLanguageData(data) {
@@ -105,16 +104,30 @@ function seriesDataBasedOnCriteria(data) {
   }
   }*/
 
-    for (let i = 0; i < data.results.length; i++) {
+  for (let i = 0; i < data.results.length; i++) {
+    const series = data.results[i];
+    const singleSerieDiv = document.createElement('div');
+    const discoverSeriesATag = document.createElement("a");
+    const discoverSeriesPoster = document.createElement("img");
+    let discoverSeriesPosterData = series.poster_path;
+    let discoverSeriesBackdropData = series.backdrop_path;
+    if (!discoverSeriesPosterData || !discoverSeriesBackdropData) {
 
-        const series = data.results[i]
-        const seriesTable = document.createElement('table');
-        const seriestextTable = document.createElement('tbody')
-        seriesTable.innerText = "Series ID/Title: " + series.id + "/" + series.title;
-        seriestextTable.innerText = "Series Description: " + series.overview;
-        discoverSeriesDiv.appendChild(seriesTable);
-        discoverSeriesDiv.appendChild(seriestextTable);
+    } else {
+      discoverSeriesPoster.setAttribute('src', `https://image.tmdb.org/t/p/w500/${discoverSeriesPosterData}`)
+      singleSerieDiv.classList.add("movie-container");
+      discoverSeriesATag.append(discoverSeriesPoster);
+      discoverSeriesATag.classList.add("discover-movie-a");
+      discoverSeriesATag.href = "series-details.html";
+      discoverSeriesDiv.append(singleSerieDiv);
+      singleSerieDiv.append(discoverSeriesATag);
+
     }
+    discoverSeriesATag.addEventListener("click", async function(event) {
+      document.cookie = "Series = " + data.results[i].id;
+      console.log("a tag clickity clicked", data.results[i].title);
+    })
+  }
 }
 
 const seriesPoster = document.getElementById('seriesPoster');
@@ -149,26 +162,30 @@ async function fetchSeriesOnSearch(seriesTitle) {
 function discoverSeriesOnSearch(data) {
     discoverSeriesDiv.innerText = ""
     console.log(data);
-    for (let i = 0; i < data.results.length; i++) {
-        const series = data.results[i];
-        const discoverSeriesATag = document.createElement("a");
-        const discoverSeriesPoster = document.createElement("img");
-        let discoverSeriesPosterData = series.poster_path;
-        let discoverSeriesBackdropData = series.backdrop_path;
-        if (!discoverSeriesPosterData || !discoverSeriesBackdropData) {
+  for (let i = 0; i < data.results.length; i++) {
+    const series = data.results[i];
+    const singleSerieDiv = document.createElement('div');
+    const discoverSeriesATag = document.createElement("a");
+    const discoverSeriesPoster = document.createElement("img");
+    let discoverSeriesPosterData = series.poster_path;
+    let discoverSeriesBackdropData = series.backdrop_path;
+    if (!discoverSeriesPosterData || !discoverSeriesBackdropData) {
 
-        } else {
-            discoverSeriesPoster.setAttribute('src', `https://image.tmdb.org/t/p/w500/${discoverSeriesPosterData}`)
-            discoverSeriesATag.append(discoverSeriesPoster);
-            discoverSeriesATag.classList.add("discover-movie-a");
-            discoverSeriesATag.href = "series-details.html";
-            discoverSeriesDiv.append(discoverSeriesATag);
-        }
-        discoverSeriesATag.addEventListener("click", async function(event) {
-            document.cookie = "Series = " + data.results[i].id;
-            console.log("a tag clickity clicked", data.results[i].title);
-        })
+    } else {
+      discoverSeriesPoster.setAttribute('src', `https://image.tmdb.org/t/p/w500/${discoverSeriesPosterData}`)
+      singleSerieDiv.classList.add("movie-container");
+      discoverSeriesATag.append(discoverSeriesPoster);
+      discoverSeriesATag.classList.add("discover-movie-a");
+      discoverSeriesATag.href = "series-details.html";
+      discoverSeriesDiv.append(singleSerieDiv);
+      singleSerieDiv.append(discoverSeriesATag);
+
     }
+    discoverSeriesATag.addEventListener("click", async function(event) {
+      document.cookie = "Series = " + data.results[i].id;
+      console.log("a tag clickity clicked", data.results[i].title);
+    })
+  }
 
 }
 
