@@ -179,25 +179,28 @@ async function fetchMoviesOnSearch(movieTitle) {
 function discoverMoviesOnSearch(data) {
     discoverMovieDiv.innerText = ""
     console.log(data);
-    for (let i = 0; i < data.results.length; i++) {
-        const movies = data.results[i];
-        const discoverMovieATag = document.createElement("a");
-        const discoverMoviePoster = document.createElement("img");
-        let discoverMoviePosterData = movies.poster_path;
-        if (!discoverMoviePosterData) {
+  for (let i = 0; i < data.results.length; i++) {
+    const movies = data.results[i];
+    const singleMovieDiv = document.createElement('div');
+    const discoverMovieATag = document.createElement("a");
+    const discoverMoviePoster = document.createElement("img");
+    let discoverMoviePosterData = movies.poster_path;
+    if (!discoverMoviePosterData) {
 
-        } else {
-            discoverMoviePoster.setAttribute('src', `https://image.tmdb.org/t/p/w500/${discoverMoviePosterData}`)
-            discoverMovieATag.append(discoverMoviePoster);
-            discoverMovieATag.classList.add("discover-movie-a");
-            discoverMovieATag.href = "movie-details.html";
-            discoverMovieDiv.append(discoverMovieATag);
-        }
-        discoverMovieATag.addEventListener("click", async function(event) {
-            document.cookie = "Movie = " + data.results[i].id;
-            console.log("a tag clickity clicked", data.results[i].title);
-        })
+    } else {
+      discoverMoviePoster.setAttribute('src', `https://image.tmdb.org/t/p/w500/${discoverMoviePosterData}`)
+      singleMovieDiv.classList.add("movie-container");
+      discoverMovieATag.append(discoverMoviePoster);
+      discoverMovieATag.classList.add("discover-movie-a");
+      discoverMovieATag.href = "movie-details.html";
+      singleMovieDiv.append(discoverMovieATag);
+      discoverMovieDiv.append(singleMovieDiv);
     }
+    discoverMovieATag.addEventListener("click", async function(event) {
+      document.cookie = "Movie = " + data.results[i].id;
+      console.log("a tag clickity clicked", data.results[i].title);
+    })
+  }
 
 }
 
