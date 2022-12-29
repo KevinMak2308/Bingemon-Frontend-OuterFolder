@@ -1,7 +1,9 @@
 jQuery(document).ready(function () {
-    jQuery("#navigation").load("header.html");
+  jQuery("#navigation").load("header.html");
 });
-
+jQuery(document).ready(function(){
+  jQuery("#footer").load("footer.html");
+});
 $(".toggle-swipe").click(function () {
     $(".movie-swiper").show()
 });

@@ -1,5 +1,8 @@
 jQuery(document).ready(function () {
-    jQuery("#navigation").load("header.html");
+  jQuery("#navigation").load("header.html");
+});
+jQuery(document).ready(function(){
+  jQuery("#footer").load("footer.html");
 });
 
 const userCookie = document.cookie.split(";").find((row) =>

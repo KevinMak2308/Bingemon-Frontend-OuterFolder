@@ -8,6 +8,10 @@ jQuery(document).ready(function(){
   jQuery("#navigation").load("header.html");
 });
 
+jQuery(document).ready(function(){
+  jQuery("#footer").load("footer.html");
+});
+
 /*===============================================
   =          Q&A collapsing           =
   ===============================================*/

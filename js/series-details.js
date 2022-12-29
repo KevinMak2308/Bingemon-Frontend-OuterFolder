@@ -1,3 +1,10 @@
+jQuery(document).ready(function () {
+  jQuery("#navigation").load("header.html");
+});
+jQuery(document).ready(function(){
+  jQuery("#footer").load("footer.html");
+});
+
 const seriesCookie = document.cookie.split(";").find((row) =>
     row.startsWith(" Series="))?.split("=")[1];
 

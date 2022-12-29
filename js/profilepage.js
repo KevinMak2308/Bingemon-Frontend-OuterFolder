@@ -1,6 +1,9 @@
 jQuery(document).ready(function () {
   jQuery("#navigation").load("header.html");
 });
+jQuery(document).ready(function(){
+  jQuery("#footer").load("footer.html");
+});
 
 $(".add-friends").click(function () {
   $(".friends-modal").toggle()
@@ -40,6 +43,7 @@ function fetchUserProfile() {
 function userProfileData(data) {
   $(".user-welcome").append("Welcome ", data.username)
 }
+
 
 function fetchUserMovieId() {
   fetch(userMovieListUrl)
