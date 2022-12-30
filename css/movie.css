@@ -386,6 +386,10 @@ body {
     padding-top: 2%;
 }
 
+.movie-details .movie-card-watch-providers img {
+    border-radius: 100%;
+    margin: 1%;
+}
 
 .discover-movie-section .movies-container {
   display: grid;
