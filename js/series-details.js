@@ -18,10 +18,8 @@ const singleSeriesUrl = url + seriesCookie;
 const seriesBackdrop = document.getElementById('seriesBackdrop')
 const seriesTitle = document.getElementById('seriesTitle')
 const seriesRating = document.getElementById('seriesRating')
-const seriesRuntime = document.getElementById('seriesRuntime')
 const seriesSeasons = document.getElementById('seriesSeasons')
 const seriesEpisodes = document.getElementById('seriesEpisodes')
-const seriesRelease = document.getElementById('seriesRelease')
 const seriesOverview = document.getElementById('seriesOverview')
 const seriesCast = document.getElementById('seriesCast')
 
