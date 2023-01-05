@@ -21,7 +21,7 @@ $('.question-container').click(function(){
 });
 
 const loginUrl = "http://localhost:8080/api/auth/signin";
-const moviePosterUrl = new URL("https://bingemon.azurewebsites.net/api/auth/movie-multi-filter")
+const moviePosterUrl = "https://bingemon.azurewebsites.net/api/movie/movie-multi-filter"
 const popularMoviePoster = document.getElementById("mostPopularMoviePoster")
 
 
