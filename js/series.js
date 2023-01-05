@@ -22,8 +22,6 @@ const userCookie = document.cookie.split(";").find((row) =>
   row.startsWith("User="))?.split("=")[1]
 
 const baseUrl = "https://bingemon.azurewebsites.net/api"
-const userUrl = "/user"
-const movieUrl = "/movie"
 const seriesUrl = "/series"
 const mainSeriesUrl = new URL(baseUrl + seriesUrl + "/series-multi-filter")
 let newURLParams = new URLSearchParams(mainSeriesUrl.search)
@@ -36,11 +34,6 @@ const seriesTrailer = document.getElementById('seriesTrailer');
 const seriesPoster = document.getElementById('seriesPoster');
 const seriesTitle = document.getElementById('seriesTitle');
 const seriesButtonsLikeDislike = document.getElementById('seriesCardBtnLikeDislike');
-
-const seriesTrailerUrl = basicUrl + "api/auth/series/credits/"
-const seriesReviewUrl = basicUrl + "api/auth/series/rating/"
-const addSeriesUrl = basicUrl + "api/auth/user-series-list/" + userCookie;
-
 
 function fetchSeriesGenres() {
   return fetch(baseUrl + seriesUrl + "/genres")

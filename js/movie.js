@@ -26,7 +26,6 @@ const movieUrl = "/movie"
 const mainMovieUrl = new URL(baseUrl + movieUrl + "/movie-multi-filter")
 let newURLParams = new URLSearchParams(mainMovieUrl.search)
 
-
 const mainMovieDiv = document.getElementById('mainMovieDiv')
 const movieGenreDropDownSelect = document.getElementById('genreDropDownList')
 const languageSelect = document.getElementById('movieLanguageChoice')
@@ -34,10 +33,6 @@ const movieTrailer = document.getElementById('movieTrailer');
 const moviePoster = document.getElementById('moviePoster');
 const movieTitle = document.getElementById('movieTitle');
 const movieButtonsLikeDislike = document.getElementById('movieCardBtnLikeDislike');
-
-
-const movieTrailerUrl = baseUrl + movieUrl + "/credits"
-const movieReviewUrl = baseUrl + movieUrl + "/reviews"
 
 function fetchMovieGenres() {
   return fetch(baseUrl + movieUrl + "/genres/en")
@@ -170,7 +165,7 @@ async function renderNextMovie(added) {
   }
 
   function getMovieTrailerUrl() {
-    return fetch(movieTrailerUrl + movie.id)
+    return fetch(baseUrl + movieUrl + `/credits/${movie.id}`)
       .then(data => data.json())
       .then(function (data) {
         movieTrailer.setAttribute("src", "")
@@ -225,7 +220,7 @@ async function renderNextMovie(added) {
   }
 
   function getMovieReview() {
-    return fetch(movieReviewUrl + movie.id)
+    return fetch(baseUrl + movieUrl + `/reviews/${movie.id}`)
       .then(data => data.json())
       .then(function (data) {
         let movieRating = document.getElementById('movieRating')

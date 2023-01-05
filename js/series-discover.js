@@ -7,6 +7,7 @@ jQuery(document).ready(function () {
 })
 
 const baseUrl = "https://bingemon.azurewebsites.net/api"
+const movieUrl = "/movie"
 const seriesUrl = "/series"
 const mainSeriesUrl = new URL(baseUrl + seriesUrl + "/series-multi-filter")
 let newURLParams = new URLSearchParams(mainSeriesUrl.search)
@@ -42,6 +43,12 @@ function seriesGenreData(data) {
     mainSeriesUrl.search = newURLParams.toString()
     await fetchSeriesForSwipeList()
   })
+}
+
+function fetchSeriesLanguage() {
+  return fetch(baseUrl + movieUrl + "/languages")
+    .then(data => data.json())
+    .then(seriesLanguageData)
 }
 
 function seriesLanguageData(data) {
@@ -163,4 +170,5 @@ function searchListener() {
 }
 
 fetchSeriesGenres()
+fetchSeriesLanguage()
 seriesSortForSwipeList()

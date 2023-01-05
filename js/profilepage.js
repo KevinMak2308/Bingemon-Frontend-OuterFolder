@@ -67,7 +67,7 @@ async function userMovieList(data) {
 }
 
 function fetchUserSeriesList() {
-  fetch(baseUrl + seriesUrl + `/serieslist/${userCookie}`)
+  fetch(baseUrl + userUrl + `/serieslist/${userCookie}`)
     .then((response) => {
       if (response.ok) {
         return response.json()
