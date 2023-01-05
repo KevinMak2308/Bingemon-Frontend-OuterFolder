@@ -19,7 +19,7 @@ const seriesUrl = "/series"
 const friendRequestUrl = "/friendrequest"
 
 function fetchUserProfile() {
-  fetch(baseUrl + userUrl + `/user/${userCookie}`)
+  fetch(baseUrl + userUrl + `/${userCookie}`)
     .then((response) => {
       if (response.ok) {
         return response.json()
@@ -126,7 +126,7 @@ function userFriendListData(data) {
 
 function fetchAddFriend() {
   let searchInput = $('.friend-search-input').val()
-  fetch(baseUrl + userUrl + `/user/${searchInput}`)
+  fetch(baseUrl + userUrl + `/${searchInput}`)
     .then((response) => {
       if (response.ok) {
         return response.json()
