@@ -113,7 +113,7 @@ async function addSeries(seriesId) {
     body: seriesId
   }
 
-  return fetch(baseUrl + seriesUrl + `/serieslist/${userCookie}`, postSeriesRequest)
+  return fetch(baseUrl + userUrl + `/serieslist/${userCookie}`, postSeriesRequest)
     .then(response => response.json())
     .catch(error => console.log(error))
 }
@@ -124,7 +124,6 @@ let currentIndex = 0
 
 async function renderNextSeries(added) {
   series = seriesList[currentIndex]
-  console.log("Series title: " + series.original_name)
   if (added && currentIndex == 0) {
     seriesAdd = seriesList[currentIndex]
     await addSeries(seriesAdd.id)

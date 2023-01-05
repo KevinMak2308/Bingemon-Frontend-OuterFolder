@@ -105,7 +105,7 @@ async function addSeriesToUserSeriesList(seriesID) {
     headers: {
       "content-type": "application/json",
     },
-    body: seriesID
+    body: seriesCookie
   }
 
   return fetch(baseUrl + userUrl + `/serieslist/${userCookie}`, postSeriesRequest)
@@ -113,4 +113,48 @@ async function addSeriesToUserSeriesList(seriesID) {
     .catch(error => console.log(error))
 }
 
-fetchSingleSeries();
+function deleteSeriesFromUserSeriesList() {
+  let deleteMovieFromUserMovieListRequest = {
+    method: "DELETE",
+    headers: {
+      "content-type": "application/json"
+    },
+    body: seriesCookie
+  }
+
+  fetch(baseUrl + userUrl + `/serieslist/${userCookie}`, deleteMovieFromUserMovieListRequest)
+    .then((response) => {
+      if (response.ok) {
+        return response.json()
+      } else
+        throw new Error("Unable to delete movie from User List")
+    })
+    .then(window.location.reload())
+}
+
+function fetchUserSeriesList() {
+  fetch(baseUrl + userUrl + `/serieslist/${userCookie}`)
+    .then((response) => {
+      if (response.ok) {
+        return response.json()
+      }
+      throw new Error("Failed to fetch user serieslist")
+    })
+    .then(userSeriesList)
+    .catch(error => console.log(error))
+}
+
+function userSeriesList(data) {
+  let userSeriesId = data
+
+  if (userSeriesId.includes(Number(seriesCookie))) {
+    $(".movie-card-button").append("<button class='delete-movie-from-userlist' type='button'> ✔ </button>")
+    $(".delete-movie-from-userlist").click(deleteSeriesFromUserSeriesList)
+  } else {
+    $(".movie-card-button").append("<button class='add-movie-from-userlist' type='button'> + </button>")
+    $(".add-movie-from-userlist").click(addSeriesToUserSeriesList)
+  }
+}
+
+fetchUserSeriesList()
+fetchSingleSeries()

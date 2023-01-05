@@ -145,7 +145,7 @@ async function addMovie(movieId) {
     body: movieId
   }
 
-  return fetch(baseUrl + userUrl + "/movielist/" + userCookie, postMovieRequest)
+  return fetch(baseUrl + userUrl + `/movielist/${userCookie}`, postMovieRequest)
     .then(response => response.json())
     .catch(error => console.log(error))
 }

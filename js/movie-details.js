@@ -153,19 +153,19 @@ function deleteMovieFromUserMovieList() {
     .then(window.location.reload())
 }
 
-function fetchUserMoviesId() {
+function fetchUserMovieList() {
   fetch(baseUrl + userUrl + `/movielist/${userCookie}`)
     .then((response) => {
       if (response.ok) {
         return response.json()
       }
-      throw new Error("Failed to fetch user movies id list")
+      throw new Error("Failed to fetch user movielist")
     })
-    .then(userMoviesIdData)
+    .then(userMovieList)
     .catch(error => console.log(error))
 }
 
-function userMoviesIdData(data) {
+function userMovieList(data) {
   let userMoviesId = data
 
   if (userMoviesId.includes(Number(movieCookie))) {
@@ -177,6 +177,6 @@ function userMoviesIdData(data) {
   }
 }
 
-fetchUserMoviesId()
+fetchUserMovieList()
 fetchSingleMovie()
 fetchMovieWatchProviders()

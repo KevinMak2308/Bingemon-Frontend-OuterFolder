@@ -19,7 +19,7 @@ const seriesUrl = "/series"
 const friendRequestUrl = "/friendrequest"
 
 function fetchUserProfile() {
-  fetch(baseUrl + userUrl + `/${userCookie}`)
+  fetch(baseUrl + userUrl + `/user/${userCookie}`)
     .then((response) => {
       if (response.ok) {
         return response.json()
@@ -91,7 +91,6 @@ async function userSeriesList(data) {
         throw new Error("Failed to retrieve series!")
       })
       .then(function (data) {
-        console.log("Does it fetch a single serie? ", data)
         $(".series-container").append("<div id='" + userSeriesId + "' class='serie-container'></div>")
         $("#" + userSeriesId).append('<img src=\"https://image.tmdb.org/t/p/w500/' + data.poster_path + '\"/>')
       })
@@ -127,7 +126,7 @@ function userFriendListData(data) {
 
 function fetchAddFriend() {
   let searchInput = $('.friend-search-input').val()
-  fetch(baseUrl + userUrl + `/${searchInput}`)
+  fetch(baseUrl + userUrl + `/user/${searchInput}`)
     .then((response) => {
       if (response.ok) {
         return response.json()
