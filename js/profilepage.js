@@ -126,7 +126,7 @@ function userFriendListData(data) {
 
 function fetchAddFriend() {
   let searchInput = $('.friend-search-input').val()
-  fetch(baseUrl + userUrl + `/${searchInput}`)
+  fetch(baseUrl + userUrl + `/username/${searchInput}`)
     .then((response) => {
       if (response.ok) {
         return response.json()
